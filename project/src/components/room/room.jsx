@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Property() {
+function Room() {
   return (
     <div className="page">
       <header className="header">
@@ -334,4 +334,4 @@ function Property() {
   );
 }
 
-export default Property;
+export default Room;
