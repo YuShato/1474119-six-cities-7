@@ -10,12 +10,13 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 
 function App(props) {
-  const {mockCardsData} = props;
+  const {mockCardsData, cities} = props;
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.MAIN}>
-          <Main mockCardsData={mockCardsData}/>
+          <Main mockCardsData={mockCardsData} cities={cities}/>
         </Route>
         <Route exact path={AppRoute.SIGN_IN}>
           <SignIn/>
@@ -46,5 +47,13 @@ App.propTypes = {
       isPremium: bool.isRequired,
     }),
   ),
+  cities: arrayOf(
+    shape({
+      id: number.isRequired,
+      name: string.isRequired,
+    }),
+  ),
+
+
 };
 export default App;
