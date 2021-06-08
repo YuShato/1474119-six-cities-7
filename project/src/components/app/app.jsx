@@ -1,9 +1,9 @@
 import React from 'react';
-import Main from '../main/main';
+import Main from '../pages/main/main';
 import {number, shape, string, arrayOf, bool} from 'prop-types';
-import Favorites from '../favorites/favorites';
-import PageNotFound from '../page-not-found/page-not-found';
-import SignIn from '../sign-in/sign-in';
+import Favorites from '../pages/favorites/favorites';
+import PageNotFound from '../pages/page-not-found/page-not-found';
+import SignIn from '../pages/sign-in/sign-in';
 import Room from '../room/room';
 import AppRoute from '../consts/consts';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
