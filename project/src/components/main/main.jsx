@@ -1,20 +1,19 @@
 import React from 'react';
 import Card from '../card/card';
 import PropTypes from 'prop-types';
+import Logo from '../logo/logo';
+import LocationItem from '../location-item/location-item';
 
 function Main (props) {
-  const {mockCardsData} = props;
+  const {mockCardsData, cities} = props;
+
   return (
     <div>
       <div className="page page--gray page--main">
         <header className="header">
           <div className="container">
             <div className="header__wrapper">
-              <div className="header__left">
-                <a className="header__logo-link header__logo-link--active">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-                </a>
-              </div>
+              <Logo/>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
@@ -35,36 +34,10 @@ function Main (props) {
           <div className="tabs">
             <section className="locations container">
               <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
+                {
+                  cities.map((city) => <LocationItem key = {city.id} name={city.name}/>,
+                  )
+                }
               </ul>
             </section>
           </div>
@@ -108,6 +81,7 @@ function Main (props) {
 
 Main.propTypes = {
   mockCardsData: PropTypes.array.isRequired,
+  cities: PropTypes.array.isRequired,
 };
 
 
