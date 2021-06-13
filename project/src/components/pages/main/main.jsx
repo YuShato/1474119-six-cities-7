@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from '../../card/card';
-import Header from '../../header/header';
-import LocationItem from '../../location-item/location-item';
+import Card from '../../loyout/card';
+import Header from '../../loyout/header/header';
+import LocationItem from '../../loyout/location-item';
 
 function Main (props) {
   const {mockCardsData, cities} = props;

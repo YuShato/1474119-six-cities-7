@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '../../footer/footer';
-import Header from '../../header/header';
+import Footer from '../../loyout/footer';
+import Header from '../../loyout/header/header';
 
 function Favorites() {
   return(

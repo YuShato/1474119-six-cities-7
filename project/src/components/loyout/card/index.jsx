@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Card (props)  {
+function Card (props) {
 
   const {name, imgPreview, price, rating, type, isPremium} = props;
 

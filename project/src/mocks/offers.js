@@ -1,0 +1,143 @@
+import { nanoid } from 'nanoid';
+import { ID_MAX_LENGTH } from '../components/consts/consts';
+
+const offers = [
+  {
+    'bedrooms': 3,
+    'city': {
+      'location': {
+        'latitude': 52.370216,
+        'longitude': 4.895168,
+        'zoom': 10,
+      },
+      'name': 'Amsterdam',
+    },
+    'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    'goods': ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
+    'host': {
+      'avatar_url': 'img/avatar-angelina.jpg',
+      'id': nanoid(ID_MAX_LENGTH),
+      'is_pro': true,
+      'name': 'Angelina',
+    },
+    'id': nanoid(ID_MAX_LENGTH),
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg'],
+    'is_favorite': false,
+    'is_premium': false,
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8,
+    },
+    'max_adults': 4,
+    'preview_image': 'img/apartment-01.jpg',
+    'price': 120,
+    'rating': 4.8,
+    'title': 'Beautiful & luxurious studio at great location',
+    'type': 'apartment',
+  },
+  {
+    'bedrooms': 3,
+    'city': {
+      'location': {
+        'latitude': 52.370216,
+        'longitude': 4.895168,
+        'zoom': 10,
+      },
+      'name': 'Brussels',
+    },
+    'description': 'Nice, cozy, warm big bed apartment. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Brussels.',
+    'goods': ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
+    'host': {
+      'avatar_url': 'img/apartment-02.jpg',
+      'id': nanoid(ID_MAX_LENGTH),
+      'is_pro': true,
+      'name': 'Steven',
+    },
+    'id': nanoid(ID_MAX_LENGTH),
+    'images': ['img/apartment-03.jpg'],
+    'is_favorite': true,
+    'is_premium': false,
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8,
+    },
+    'max_adults': 1,
+    'preview_image': 'img/apartment-03.jpg',
+    'price': 100,
+    'rating': 5.0,
+    'title': 'Nice, cozy, warm big bed apartment',
+    'type': 'apartment',
+  },
+  {
+    'bedrooms': 1,
+    'city': {
+      'location': {
+        'latitude': 23.123456,
+        'longitude': 4.123456,
+        'zoom': 10,
+      },
+      'name': 'Paris',
+    },
+    'description': 'Wood and stone place',
+    'goods': ['Heating', 'Coffee machine', 'Dishwasher'],
+    'host': {
+      'avatar_url': 'img/apartment-02.jpg',
+      'id': nanoid(ID_MAX_LENGTH),
+      'is_pro': true,
+      'name': 'Alexander',
+    },
+    'id': nanoid(ID_MAX_LENGTH),
+    'images': ['img/apartment-03.jpg', 'img/apartment-04.jpg'],
+    'is_favorite': true,
+    'is_premium': false,
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8,
+    },
+    'max_adults': 3,
+    'preview_image': 'img/room.jpg',
+    'price': 132,
+    'rating': 4.0,
+    'title': 'Wood and stone place',
+    'type': 'Private room',
+  },
+  {
+    'bedrooms': 3,
+    'city': {
+      'location': {
+        'latitude': 52.370316,
+        'longitude': 4.995168,
+        'zoom': 10,
+      },
+      'name': 'Cologne',
+    },
+    'description': 'Canal View Prinsengracht hjhfodscjlskd jskdklsjlsd kjmdskljk skjhd djjd kskslssl; kslslsln jkdhchuir  jskjsksnc,',
+    'goods': ['Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
+    'host': {
+      'avatar_url': 'img/apartment-02.jpg',
+      'id': nanoid(ID_MAX_LENGTH),
+      'is_pro': true,
+      'name': 'Helga',
+    },
+    'id': nanoid(ID_MAX_LENGTH),
+    'images': ['img/room.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-02.jpg'],
+    'is_favorite': false,
+    'is_premium': true,
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8,
+    },
+    'max_adults': 2,
+    'preview_image': 'img/apartment-02.jpg',
+    'price': 80,
+    'rating': 4.0,
+    'title': 'Canal View Prinsengracht',
+    'type': 'apartment',
+  },
+];
+
+export default offers;

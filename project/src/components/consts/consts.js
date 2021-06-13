@@ -1,4 +1,4 @@
-const AppRoute = {
+export const AppRoute = {
   MAIN: '/',
   SIGN_IN: '/login',
   FAVORITES: '/favorites',
@@ -6,4 +6,6 @@ const AppRoute = {
   PAGE_NOT_FOUND: '/404',
 };
 
-export default AppRoute;
+export const MAX_RATE = 5;
+
+export const ID_MAX_LENGTH = 10;

@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Main from '../pages/main/main';
-import {number, shape, string, arrayOf, bool} from 'prop-types';
 import Favorites from '../pages/favorites/favorites';
 import PageNotFound from '../pages/page-not-found/page-not-found';
 import SignIn from '../pages/sign-in/sign-in';
-import Room from '../room/room';
-import AppRoute from '../consts/consts';
+import Room from '../pages/room/room';
+import { AppRoute } from '../consts/consts';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-
 function App(props) {
-  const {mockCardsData, cities} = props;
+  const {mockCardsData, cities, offers, reviewGet} = props;
 
   return (
     <BrowserRouter>
@@ -25,7 +24,7 @@ function App(props) {
           <Favorites/>
         </Route>
         <Route exact path={AppRoute.ROOM}>
-          <Room/>
+          <Room offers={offers} reviewGet={reviewGet}/>
         </Route>
         <Route exact path={AppRoute.PAGE_NOT_FOUND}>
           <PageNotFound/>
@@ -37,23 +36,10 @@ function App(props) {
 }
 
 App.propTypes = {
-  mockCardsData: arrayOf(
-    shape({
-      id: number.isRequired,
-      name: string.isRequired,
-      type: string.isRequired,
-      imgPreview: string.isRequired,
-      price: number.isRequired,
-      isPremium: bool.isRequired,
-    }),
-  ),
-  cities: arrayOf(
-    shape({
-      id: number.isRequired,
-      name: string.isRequired,
-    }),
-  ),
 
-
+  cities: PropTypes.arrayOf(PropTypes.object),
+  offers: PropTypes.arrayOf(PropTypes.object),
+  mockCardsData: PropTypes.arrayOf(PropTypes.object),
+  reviewGet: PropTypes.arrayOf(PropTypes.object),
 };
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderNotLogged from '../../header/header-not-logged';
+import HeaderNotLogged from '../../loyout/header/header-not-logged';
 
 function SignIn() {
   return (
