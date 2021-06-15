@@ -9,7 +9,7 @@ import { AppRoute } from '../consts/consts';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 function App(props) {
-  const {mockCardsData, cities, offers, reviewGet} = props;
+  const {mockCardsData, cities, offers, reviewGet, starRating} = props;
 
   return (
     <BrowserRouter>
@@ -24,7 +24,7 @@ function App(props) {
           <Favorites/>
         </Route>
         <Route exact path={AppRoute.ROOM}>
-          <Room offers={offers} reviewGet={reviewGet}/>
+          <Room offers={offers} reviewGet={reviewGet} starRating={starRating}/>
         </Route>
         <Route exact path={AppRoute.PAGE_NOT_FOUND}>
           <PageNotFound/>
@@ -41,5 +41,6 @@ App.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   mockCardsData: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
+  starRating: PropTypes.arrayOf(PropTypes.object),
 };
 export default App;

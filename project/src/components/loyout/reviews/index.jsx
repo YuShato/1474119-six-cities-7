@@ -3,11 +3,13 @@ import ReviewForm from '../review-form';
 import {getReviewDate, getRating} from '../../../common';
 import PropTypes from 'prop-types';
 
-function Reviews ({reviewGet}) {
+function Reviews ({reviewGet, starRating}) {
 
   return (
     <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+      <h2 className="reviews__title">Reviews &middot;
+        <span className="reviews__amount">{reviewGet.length}</span>
+      </h2>
       <ul className="reviews__list">
         {reviewGet.map((review) => {
           const {
@@ -44,12 +46,13 @@ function Reviews ({reviewGet}) {
           );
         })}
       </ul>
-      <ReviewForm />
+      <ReviewForm starRating={starRating} />
     </section>
   );
 }
 Reviews.propTypes = {
   reviewGet: PropTypes.arrayOf(PropTypes.object),
+  starRating: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Reviews;

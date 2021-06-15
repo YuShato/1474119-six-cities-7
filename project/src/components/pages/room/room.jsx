@@ -8,7 +8,7 @@ import { getRating, capitalizeFirstLetter } from '../../../common';
 import PlacesList from '../../loyout/places-list';
 import { ID_MAX_LENGTH } from '../../consts/consts';
 
-function Room ({offers, reviewGet}) {
+function Room ({offers, reviewGet, starRating}) {
 
   const  {
     images,
@@ -106,7 +106,7 @@ function Room ({offers, reviewGet}) {
                   </p>
                 </div>
               </div>
-              <Reviews reviewGet={reviewGet}/>
+              <Reviews reviewGet={reviewGet} starRating={starRating}/>
             </div>
           </div>
           <section className="property__map map"></section>
@@ -125,6 +125,7 @@ function Room ({offers, reviewGet}) {
 Room.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
+  starRating: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Room;
