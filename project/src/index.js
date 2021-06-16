@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app';
-import mockCardsData from './mocks/mock';
-import CITIES from './components/consts/cities';
 import offers from './mocks/offers';
 import reviewGet from './mocks/reviewGet';
-import Rating from './components/consts/rating';
+import App from './components/app';
+
+const Setting = {
+  AD_COUNT: 312,
+  CITIES: ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'],
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App
-      mockCardsData={mockCardsData}
-      cities={CITIES}
-      offers={offers}
-      reviewGet={reviewGet.slice()}
-      starRating={Rating}
-    />,
-  </React.StrictMode>,
-  document.getElementById('root'));
+  <App
+    adCount={Setting.AD_COUNT}
+    cities={Setting.CITIES}
+    offers={offers.slice()}
+    reviewGet={reviewGet.slice()}
+  />,
+  document.querySelector('#root'),
+);

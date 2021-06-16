@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Star from '../star';
-import PropTypes from 'prop-types';
-import { nanoid } from '@reduxjs/toolkit';
-import { ID_MAX_LENGTH } from '../../consts/consts';
+import { nanoid } from 'nanoid';
+import { ID_MAX_LENGTH, MAX_RATING } from '../../consts/consts';
 
-function ReviewForm({starRating}) {
-
+function ReviewsForm () {
   const [userForm, setUserForm] = useState({
     stars: null,
     review: '',
@@ -27,7 +25,8 @@ function ReviewForm({starRating}) {
   };
 
   return (
-    <form className="reviews__form form"
+    <form
+      className="reviews__form form"
       action="#"
       method="post"
       onSubmit={handleSubmit}
@@ -36,9 +35,10 @@ function ReviewForm({starRating}) {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {starRating.map((rate) => (
-          <Star key={nanoid(ID_MAX_LENGTH)}
-            rate={rate}
+        {Array.from(new Array(MAX_RATING)).map((field, index) => (
+          <Star
+            key={nanoid(ID_MAX_LENGTH)}
+            serialNumber={MAX_RATING - index}
             handleRadioChange={handleRadioChange}
           />
         ))}
@@ -53,16 +53,20 @@ function ReviewForm({starRating}) {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set
+          <span className="reviews__star">rating</span> and describe your stay
+          with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled
+        >
+          Submit
+        </button>
       </div>
     </form>
   );
 }
 
-ReviewForm.propTypes = {
-  starRating: PropTypes.arrayOf(PropTypes.object),
-};
-
-export default ReviewForm;
+export default ReviewsForm;
