@@ -3,7 +3,7 @@ import ReviewsForm from '../review-form';
 import {getReviewDate, getRating} from '../../../common';
 import PropTypes from 'prop-types';
 
-function Reviews ({reviewGet}) {
+function Reviews ({reviewGet, ratingData}) {
 
   return (
     <section className="property__reviews reviews">
@@ -52,13 +52,14 @@ function Reviews ({reviewGet}) {
           );
         })}
       </ul>
-      <ReviewsForm />
+      <ReviewsForm ratingData={ratingData} />
     </section>
   );
 }
 
 Reviews.propTypes = {
   reviewGet: PropTypes.arrayOf(PropTypes.object),
+  ratingData: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Reviews;

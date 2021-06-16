@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Star ({serialNumber, handleRadioChange})  {
+function Star ({currentRating, handleRadioChange})  {
+  const {id, title} = currentRating;
+
   return (
     <React.Fragment>
       <input
         className="form__rating-input visually-hidden"
         name="rating"
-        defaultValue={serialNumber}
-        id={`${serialNumber}-stars`}
+        defaultValue={currentRating.id}
+        id={`${id}-stars`}
         type="radio"
         onChange={handleRadioChange}
       />
       <label
-        htmlFor={`${serialNumber}-stars`}
+        htmlFor={`${id}-stars`}
         className="reviews__rating-label form__rating-label"
-        title="good"
+        title={title}
       >
         <svg className="form__star-image" width={37} height={33}>
           <use xlinkHref="#icon-star" />
@@ -26,7 +28,7 @@ function Star ({serialNumber, handleRadioChange})  {
 }
 
 Star.propTypes = {
-  serialNumber: PropTypes.number.isRequired,
+  currentRating: PropTypes.object.isRequired,
   handleRadioChange: PropTypes.func.isRequired,
 };
 

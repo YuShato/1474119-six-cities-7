@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import offers from './mocks/offers';
 import reviewGet from './mocks/reviewGet';
 import App from './components/app';
+import Rating from './components/consts/rating';
 
 const Setting = {
   AD_COUNT: 312,
@@ -15,6 +16,7 @@ ReactDOM.render(
     cities={Setting.CITIES}
     offers={offers.slice()}
     reviewGet={reviewGet.slice()}
+    ratingData={Rating}
   />,
   document.querySelector('#root'),
 );

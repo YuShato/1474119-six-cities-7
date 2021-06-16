@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Star from '../star';
-import { nanoid } from 'nanoid';
-import { ID_MAX_LENGTH, MAX_RATING } from '../../consts/consts';
+import PropTypes from 'prop-types';
 
-function ReviewsForm () {
+function ReviewsForm ({ratingData}) {
   const [userForm, setUserForm] = useState({
     stars: null,
     review: '',
   });
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -35,10 +35,10 @@ function ReviewsForm () {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {Array.from(new Array(MAX_RATING)).map((field, index) => (
+        {ratingData.map((currentRating) => (
           <Star
-            key={nanoid(ID_MAX_LENGTH)}
-            serialNumber={MAX_RATING - index}
+            key={currentRating.id}
+            currentRating={currentRating}
             handleRadioChange={handleRadioChange}
           />
         ))}
@@ -68,5 +68,9 @@ function ReviewsForm () {
     </form>
   );
 }
+
+ReviewsForm.propTypes = {
+  ratingData: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default ReviewsForm;

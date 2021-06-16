@@ -9,7 +9,7 @@ import PlacesList from '../../loyout/places-list';
 import { ID_MAX_LENGTH } from '../../consts/consts';
 import { Housing } from '../../consts/consts';
 
-function OfferPage ({offers, reviewGet}) {
+function OfferPage ({offers, reviewGet, ratingData}) {
   const {
     is_premium: isPremium,
     images,
@@ -109,7 +109,7 @@ function OfferPage ({offers, reviewGet}) {
                   </p>
                 </div>
               </div>
-              <Reviews reviewGet={reviewGet} />
+              <Reviews reviewGet={reviewGet} ratingData={ratingData}/>
             </div>
           </div>
           <section className="property__map map" />
@@ -130,6 +130,7 @@ function OfferPage ({offers, reviewGet}) {
 OfferPage.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
+  ratingData: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default OfferPage;
