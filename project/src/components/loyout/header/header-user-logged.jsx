@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../logo';
 
-function HeaderNotLogged() {
+function HeaderUserLogged() {
   return (
     <header className="header">
       <div className="container">
@@ -13,7 +13,7 @@ function HeaderNotLogged() {
                 <a className="header__nav-link header__nav-link--profile" href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__login">Sign in</span>
+                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                 </a>
               </li>
             </ul>
@@ -24,4 +24,4 @@ function HeaderNotLogged() {
   );
 }
 
-export default HeaderNotLogged;
+export default HeaderUserLogged;

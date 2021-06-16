@@ -1,10 +1,10 @@
 import React from 'react';
-import HeaderNotLogged from '../../loyout/header/header-not-logged';
+import Header from '../../loyout/header/header';
 
 function SignIn() {
   return (
     <div className="page page--gray page--login">
-      <HeaderNotLogged/>
+      <Header/>
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
