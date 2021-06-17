@@ -1,4 +1,4 @@
-const AppRoute = {
+export const AppRoute = {
   MAIN: '/',
   SIGN_IN: '/login',
   FAVORITES: '/favorites',
@@ -6,4 +6,24 @@ const AppRoute = {
   PAGE_NOT_FOUND: '/404',
 };
 
-export default AppRoute;
+export const MAX_RATING = 5;
+
+export const ID_MAX_LENGTH = 10;
+
+export const ImageSize = {
+  LARGE: {
+    width: 260,
+    height: 200,
+  },
+  SMALL: {
+    width: 150,
+    height: 110,
+  },
+};
+
+export const Housing = {
+  apartment: 'Apartment',
+  room: 'Private Room',
+  house: 'House',
+  hotel: 'Hotel',
+};
