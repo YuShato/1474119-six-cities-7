@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PlacesList from '../../loyout/places-list';
 import Header from '../../loyout/header/header';
 import LocationsTabs from '../../loyout/locations-tabs';
+import Map from '../../loyout/map';
 
 function MainPage ({adCount, cities, offers})  {
 
@@ -50,7 +51,9 @@ function MainPage ({adCount, cities, offers})  {
               <PlacesList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              {offers ?
+                <Map offers={offers} /> :
+                <section className="cities__map map"></section>}
             </div>
           </div>
         </div>

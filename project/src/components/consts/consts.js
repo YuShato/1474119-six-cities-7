@@ -27,3 +27,16 @@ export const Housing = {
   house: 'House',
   hotel: 'Hotel',
 };
+
+export const MapParams = {
+  ZOOM: 12,
+  CENTER: {
+    lat: 52.38333,
+    lng: 4.9,
+  },
+  ICON: {
+    iconUrl: 'img/pin.svg',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+  },
+};

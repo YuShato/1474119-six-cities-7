@@ -233,7 +233,7 @@ const offers =  [
       'is_pro': false,
       'name': 'Julia',
     },
-    'id': 4,
+    'id': 5,
     'images': [
       'img/studio-01.jpg',
       'img/room.jpg',
@@ -253,7 +253,7 @@ const offers =  [
     'preview_image': 'img/apartment-03.jpg',
     'price': 100,
     'rating': 1,
-    'title': 'White castle',
+    'title': 'Lorem ipsum dolor',
     'type': 'hotel',
   },
 ];
