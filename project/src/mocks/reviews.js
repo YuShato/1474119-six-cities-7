@@ -17,7 +17,7 @@ const reviews = [
     'id': 2,
     'rating': 5,
     'user': {
-      'avatar_url': 'img/avatar-max.jpg',
+      'avatar_url': 'img/avatar-angelina.jpg',
       'id': 1,
       'is_pro': false,
       'name': 'Yustas',
