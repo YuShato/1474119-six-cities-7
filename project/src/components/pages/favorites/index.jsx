@@ -5,7 +5,7 @@ import Header from '../../loyout/header/header';
 import PlacesList from '../../loyout/places-list';
 import { getOffersByCity } from '../../../common';
 
-function FavoritesPage ({offers}) {
+function FavoritesPage ({offers, pageType}) {
   return (
     <div className="page">
       <Header />
@@ -23,7 +23,7 @@ function FavoritesPage ({offers}) {
                   </div>
                 </div>
                 {/* Временное решение */}
-                <PlacesList offers={getOffersByCity(offers, 'Amsterdam')} />
+                <PlacesList offers={getOffersByCity(offers, 'Amsterdam')} pageType={pageType}/>
               </li>
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
@@ -34,7 +34,7 @@ function FavoritesPage ({offers}) {
                   </div>
                 </div>
                 {/* Временное решение */}
-                <PlacesList offers={getOffersByCity(offers, 'Cologne')} />
+                <PlacesList offers={getOffersByCity(offers, 'Cologne')} pageType={pageType} />
               </li>
             </ul>
           </section>
@@ -47,6 +47,7 @@ function FavoritesPage ({offers}) {
 
 FavoritesPage.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pageType: PropTypes.string.isRequired,
 };
 
 export default FavoritesPage;

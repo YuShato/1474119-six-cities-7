@@ -7,21 +7,22 @@ import OfferPage from '../pages/room';
 import NotFoundPage  from '../pages/page-not-found';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-function App ({adCount, cities, offers, reviewGet, ratingData}) {
+function App ({adCount, cities, offers, reviewGet, ratingData, pageTypes}) {
+  const {FAVORITES, MAIN, OFFER} = pageTypes;
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <MainPage adCount={adCount} cities={cities} offers={offers} />
+          <MainPage adCount={adCount} cities={cities} offers={offers} pageType={MAIN} />
         </Route>
         <Route path="/login" exact>
           <LoginPage />
         </Route>
         <Route path="/favorites" exact>
-          <FavoritesPage offers={offers} />
+          <FavoritesPage offers={offers} pageType={FAVORITES} />
         </Route>
         <Route path="/offer/:id?" exact>
-          <OfferPage offers={offers} reviewGet={reviewGet} ratingData={ratingData}/>
+          <OfferPage offers={offers} reviewGet={reviewGet} ratingData={ratingData} pageType={OFFER}/>
         </Route>
         <Route>
           <NotFoundPage />
@@ -37,6 +38,7 @@ App.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
   ratingData: PropTypes.arrayOf(PropTypes.object),
+  pageTypes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default App;

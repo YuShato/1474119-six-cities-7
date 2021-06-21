@@ -57,6 +57,7 @@ function Map ({offers}) {
     <section
       id='map'
       className='cities__map map'
+      style={{height: '90vh'}}
       ref={map}
     />
   );

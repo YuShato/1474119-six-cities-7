@@ -5,7 +5,7 @@ import Header from '../../loyout/header/header';
 import LocationsTabs from '../../loyout/locations-tabs';
 import Map from '../../loyout/map';
 
-function MainPage ({adCount, cities, offers})  {
+function MainPage ({adCount, cities, offers, pageType})  {
 
   return (
     <div className="page page--gray page--main">
@@ -48,7 +48,7 @@ function MainPage ({adCount, cities, offers})  {
                   </li>
                 </ul>
               </form>
-              <PlacesList offers={offers} />
+              <PlacesList offers={offers}  pageType={pageType}/>
             </section>
             <div className="cities__right-section">
               {offers ?
@@ -66,6 +66,7 @@ MainPage.propTypes = {
   adCount: PropTypes.number.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pageType: PropTypes.string.isRequired,
 };
 
 export default MainPage;
