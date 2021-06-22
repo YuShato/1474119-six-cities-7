@@ -8,8 +8,9 @@ import { getRating } from '../../../common';
 import PlacesList from '../../loyout/places-list';
 import { ID_MAX_LENGTH } from '../../consts/consts';
 import { Housing } from '../../consts/consts';
+import Map from '../../loyout/map';
 
-function OfferPage ({offers, reviewGet, ratingData}) {
+function OfferPage ({offers, reviewGet, ratingData, pageType}) {
   const {
     is_premium: isPremium,
     images,
@@ -112,14 +113,14 @@ function OfferPage ({offers, reviewGet, ratingData}) {
               <Reviews reviewGet={reviewGet} ratingData={ratingData}/>
             </div>
           </div>
-          <section className="property__map map" />
+          {offers ? <Map offers={offers.slice(1, 4)}/> : <section className="property__map map" />}
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <PlacesList offers={offers} />
+            <PlacesList offers={offers.slice(0, 3)} pageType={pageType} />
           </section>
         </div>
       </main>
@@ -131,6 +132,7 @@ OfferPage.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
   ratingData: PropTypes.arrayOf(PropTypes.object),
+  pageType: PropTypes.string.isRequired,
 };
 
 export default OfferPage;

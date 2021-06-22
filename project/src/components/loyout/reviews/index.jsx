@@ -1,7 +1,9 @@
 import React from 'react';
 import ReviewsForm from '../review-form';
-import {getReviewDate, getRating} from '../../../common';
+import ReviewItem from '../../review-item/review-item';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
+import { ID_MAX_LENGTH } from '../../consts/consts';
 
 function Reviews ({reviewGet, ratingData}) {
 
@@ -11,46 +13,9 @@ function Reviews ({reviewGet, ratingData}) {
         Reviews · <span className="reviews__amount">{reviewGet.length}</span>
       </h2>
       <ul className="reviews__list">
-        {reviewGet.map((review) => {
-          const {
-            user: {avatar_url: avatarUrl, name},
-            rating,
-            comment,
-            date,
-            id,
-          } = review;
-
-          return (
-            <li className="reviews__item" key={id}>
-              <div className="reviews__user user">
-                <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                  <img
-                    className="reviews__avatar user__avatar"
-                    src={avatarUrl}
-                    width={54}
-                    height={54}
-                    alt="Reviews avatar"
-                  />
-                </div>
-                <span className="reviews__user-name">{name}</span>
-              </div>
-              <div className="reviews__info">
-                <div className="reviews__rating rating">
-                  <div className="reviews__stars rating__stars">
-                    <span style={{width: `${getRating(rating)}%`}} />
-                    <span className="visually-hidden">Rating</span>
-                  </div>
-                </div>
-                <p className="reviews__text">
-                  {comment}
-                </p>
-                <time className="reviews__time" dateTime={getReviewDate(date).htmlDate}>
-                  {getReviewDate(date).userDate}
-                </time>
-              </div>
-            </li>
-          );
-        })}
+        { reviewGet.map((review) => (
+          <ReviewItem review={review} key={nanoid(ID_MAX_LENGTH)}/>
+        ))}
       </ul>
       <ReviewsForm ratingData={ratingData} />
     </section>
