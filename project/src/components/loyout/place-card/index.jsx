@@ -23,11 +23,11 @@ function PlaceCard ({offer, handleMouseEnter, handleMouseOut}) {
 
   return (
     <article
-      className={`
-        ${Page.isFavorites && 'favorites__card'}
-        ${Page.isMain && 'cities__place-card'}
-        ${Page.isOffer && 'near-places__card'} place-card
-      `}
+      className={`${
+        (Page.isFavorites && 'favorites__card') ||
+        (Page.isMain && 'cities__place-card') ||
+        (Page.isOffer && 'near-places__card')
+      } place-card`}
       onMouseEnter={handleMouseEnter}
       onMouseOut={handleMouseOut}
     >
@@ -52,11 +52,7 @@ function PlaceCard ({offer, handleMouseEnter, handleMouseOut}) {
           />
         </a>
       </div>
-      <div
-        className={`${
-          Page.isFavorites && 'favorites__card-info '
-        }place-card__info`}
-      >
+      <div className={Page.isFavorites ? 'favorites__card-info place-card__info' : 'place-card__info'}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price}</b>

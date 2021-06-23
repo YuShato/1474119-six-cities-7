@@ -9,6 +9,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App ({adCount, cities, offers, reviewGet, ratingData, pageTypes}) {
   const {FAVORITES, MAIN, OFFER} = pageTypes;
+
   return (
     <BrowserRouter>
       <Switch>

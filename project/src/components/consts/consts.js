@@ -30,6 +30,7 @@ export const Housing = {
 
 export const MapParams = {
   ZOOM: 12,
+  MAP_HEIGHT: '579px',
   CENTER: {
     lat: 52.38333,
     lng: 4.9,
