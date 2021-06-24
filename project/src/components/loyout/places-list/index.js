@@ -1,26 +1,24 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card';
-import { usePage } from '../../../hooks/usePage';
+import classNames from 'classnames';
 
-function PlacesList({offers}) {
+function PlacesList({offers, pageType}) {
   const [activeCard, setActiveCard] = useState(null);
 
-  const Page = usePage();
-  const className = `${
-    (Page.isFavorites && 'favorites__image-wrapper') ||
-    (Page.isMain && 'cities__places-list tabs__content') ||
-    (Page.isOffer && 'near-places__list')
-  } pplaces__list`;
-
-
   return (
-
-    <div className={className}>
-      {(Page.isOffer ? offers.slice(0, 3) : offers).map((offer) => (
+    <div
+      className={classNames('places__list', {
+        'favorites__places': pageType === 'favorites',
+        'cities__places-list tabs__content': pageType === 'main',
+        'near-places__list': pageType === 'offer',
+      })}
+    >
+      {offers.map((offer) => (
         <PlaceCard
           key={offer.id}
           offer={offer}
+          pageType={pageType}
           handleMouseEnter={() => {
             setActiveCard({...activeCard, ...offer});
           }}
@@ -35,6 +33,7 @@ function PlacesList({offers}) {
 
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
+  pageType: PropTypes.string,
 };
 
 export default PlacesList;

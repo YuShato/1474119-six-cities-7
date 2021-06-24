@@ -2,12 +2,11 @@ import React from 'react';
 import PROPTYPES from '../../consts/propTypesData';
 import { getRating } from '../../../common';
 import { Housing, ImageSize } from '../../consts/consts';
-import {usePage} from '../../../hooks/usePage';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-function PlaceCard ({offer, handleMouseEnter, handleMouseOut}) {
-  const Page = usePage();
+function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
 
   const {
     is_premium: isPremium,
@@ -19,15 +18,15 @@ function PlaceCard ({offer, handleMouseEnter, handleMouseOut}) {
     type,
   } = offer;
 
-  const shouldBeMarked = Page.isMain && isPremium;
+  const shouldBeMarked = pageType === 'main' && isPremium;
 
   return (
     <article
-      className={`${
-        (Page.isFavorites && 'favorites__card') ||
-        (Page.isMain && 'cities__place-card') ||
-        (Page.isOffer && 'near-places__card')
-      } place-card`}
+      className={classNames('place-card', {
+        'favorites__card': pageType === 'favorites',
+        'cities__place-card': pageType === 'main',
+        'near-places__card': pageType === 'offer',
+      })}
       onMouseEnter={handleMouseEnter}
       onMouseOut={handleMouseOut}
     >
@@ -36,23 +35,23 @@ function PlaceCard ({offer, handleMouseEnter, handleMouseOut}) {
           <span>Premium</span>
         </div>
       )}
-      <div className={`
-        ${Page.isFavorites && 'favorites__image-wrapper'}
-        ${Page.isMain && 'cities__image-wrapper'}
-        ${Page.isOffer && 'near-places__image-wrapper'} place-card__image-wrapper
-      `}
+      <div className={classNames('place-card__image-wrapper', {
+        'favorites__image-wrapper': pageType === 'favorites',
+        'cities__image-wrapper': pageType === 'main',
+        'near-places__image-wrapper': pageType === 'offer',
+      })}
       >
         <a href="#">
           <img
             className="place-card__image"
             src={previewImage}
-            width={Page.isFavorites ? ImageSize.SMALL.width : ImageSize.LARGE.width}
-            height={Page.isFavorites ? ImageSize.SMALL.width : ImageSize.LARGE.height}
+            width={pageType === 'favorites' ? ImageSize.SMALL.width : ImageSize.LARGE.width}
+            height={pageType === 'favorites' ? ImageSize.SMALL.width : ImageSize.LARGE.height}
             alt={Housing[type]}
           />
         </a>
       </div>
-      <div className={Page.isFavorites ? 'favorites__card-info place-card__info' : 'place-card__info'}>
+      <div className={pageType === 'favorites' ? 'favorites__card-info place-card__info' : 'place-card__info'}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price}</b>
@@ -89,6 +88,7 @@ PlaceCard.propTypes = {
   offer: PROPTYPES.OFFER,
   handleMouseEnter: PropTypes.func,
   handleMouseOut: PropTypes.func,
+  pageType: PropTypes.string,
 };
 
 export  default PlaceCard;
