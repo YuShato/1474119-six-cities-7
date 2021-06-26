@@ -6,8 +6,8 @@ import PropertyGallery from '../../loyout/property-gallery';
 import PropTypes from 'prop-types';
 import { getRating } from '../../../common';
 import PlacesList from '../../loyout/places-list';
-import { ID_MAX_LENGTH } from '../../consts/consts';
-import { Housing } from '../../consts/consts';
+import { ID_MAX_LENGTH } from '../../../consts/consts';
+import { Housing } from '../../../consts/consts';
 import Map from '../../loyout/map';
 
 function OfferPage ({offers, reviewGet, ratingData}) {

@@ -41,3 +41,14 @@ export const MapParams = {
     iconAnchor: [15, 30],
   },
 };
+
+export const Setting = {
+  CITIES: ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'],
+  PAGE_TYPES: {
+    FAVORITES: 'favorites',
+    MAIN: 'main',
+    OFFER: 'offer',
+  },
+};
+
+export const INITIAL_CITY = Setting.CITIES[0];

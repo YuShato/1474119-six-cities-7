@@ -1,9 +1,9 @@
 import React from 'react';
 import ReviewsForm from '../review-form';
-import ReviewItem from '../../review-item/review-item';
+import ReviewItem from '../review-item/review-item';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import { ID_MAX_LENGTH } from '../../consts/consts';
+import { ID_MAX_LENGTH } from '../../../consts/consts';
 
 function Reviews ({reviewGet, ratingData}) {
 

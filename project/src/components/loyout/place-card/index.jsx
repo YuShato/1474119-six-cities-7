@@ -1,7 +1,7 @@
 import React from 'react';
-import PROPTYPES from '../../consts/propTypesData';
+import PROPTYPES from '../../../consts/propTypesData';
 import { getRating } from '../../../common';
-import { Housing, ImageSize } from '../../consts/consts';
+import { Housing, ImageSize } from '../../../consts/consts';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
