@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function LocationItem ({city, onClick, activeCity}) {
+function LocationItem ({ city, onClick, activeCity }) {
 
   return (
     <li className="locations__item">

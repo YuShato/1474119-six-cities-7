@@ -49,7 +49,7 @@ function Map ({offers}) {
     });
 
     return () => {
-      map.current.remove();
+      map.remove();
     };
   }, []);
 

@@ -14,16 +14,28 @@ function App ({cities, offers, reviewGet, ratingData, pageTypes}) {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <MainPage cities={cities} offers={offers} pageType={MAIN} />
+          <MainPage
+            cities={cities}
+            offers={offers}
+            pageType={MAIN}
+          />
         </Route>
         <Route path="/login" exact>
           <LoginPage />
         </Route>
         <Route path="/favorites" exact>
-          <FavoritesPage offers={offers} pageType={FAVORITES} />
+          <FavoritesPage
+            offers={offers}
+            pageType={FAVORITES}
+          />
         </Route>
         <Route path="/offer/:id?" exact>
-          <OfferPage offers={offers} reviewGet={reviewGet} ratingData={ratingData} pageType={OFFER}/>
+          <OfferPage
+            offers={offers}
+            reviewGet={reviewGet}
+            ratingData={ratingData}
+            pageType={OFFER}
+          />
         </Route>
         <Route>
           <NotFoundPage />
