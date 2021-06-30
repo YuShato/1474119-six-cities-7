@@ -6,11 +6,11 @@ import PropertyGallery from '../../loyout/property-gallery';
 import PropTypes from 'prop-types';
 import { getRating } from '../../../common';
 import PlacesList from '../../loyout/places-list';
-import { ID_MAX_LENGTH } from '../../consts/consts';
-import { Housing } from '../../consts/consts';
+import { ID_MAX_LENGTH } from '../../../consts/consts';
+import { Housing } from '../../../consts/consts';
 import Map from '../../loyout/map';
 
-function OfferPage ({offers, reviewGet, ratingData, pageType}) {
+function OfferPage ({offers, reviewGet, ratingData}) {
   const {
     is_premium: isPremium,
     images,
@@ -120,7 +120,7 @@ function OfferPage ({offers, reviewGet, ratingData, pageType}) {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <PlacesList offers={offers.slice(0, 3)} pageType={pageType} />
+            <PlacesList pageType='offer' offers={offers.slice(0, 3)} />
           </section>
         </div>
       </main>
@@ -132,7 +132,6 @@ OfferPage.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
   ratingData: PropTypes.arrayOf(PropTypes.object),
-  pageType: PropTypes.string.isRequired,
 };
 
 export default OfferPage;

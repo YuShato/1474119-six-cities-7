@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../../loyout/places-list';
 import Header from '../../loyout/header/header';
 import LocationsTabs from '../../loyout/locations-tabs';
 import Map from '../../loyout/map';
+import { ActionCreator } from '../../../store/action';
+import { connect } from 'react-redux';
 
-function MainPage ({adCount, cities, offers, pageType})  {
+function MainPage ({onCitySelect, city, offers})  {
+
+  useEffect(() =>{
+    onCitySelect(city);
+  }, [onCitySelect, city]);
 
   return (
     <div className="page page--gray page--main">
@@ -14,14 +20,14 @@ function MainPage ({adCount, cities, offers, pageType})  {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationsTabs cities={cities} />
+            <LocationsTabs city={city} activeCity={city} getActiveCity={onCitySelect} />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{adCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -48,7 +54,7 @@ function MainPage ({adCount, cities, offers, pageType})  {
                   </li>
                 </ul>
               </form>
-              <PlacesList offers={offers}  pageType={pageType}/>
+              <PlacesList offers={offers}  pageType='main'/>
             </section>
             <div className="cities__right-section">
               {offers ?
@@ -63,10 +69,23 @@ function MainPage ({adCount, cities, offers, pageType})  {
 }
 
 MainPage.propTypes = {
-  adCount: PropTypes.number.isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string),
+  city: PropTypes.string.isRequired,
+  onCitySelect: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.string.isRequired,
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCitySelect(city) {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.filteredOffers());
+  },
+});
+
+export  {MainPage};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

@@ -3,7 +3,7 @@ import {PropTypes} from 'prop-types';
 
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { MapParams } from '../../consts/consts';
+import { MapParams } from '../../../consts/consts';
 
 function Map ({offers}) {
   const ZOOM = MapParams.ZOOM;
@@ -49,7 +49,7 @@ function Map ({offers}) {
     });
 
     return () => {
-      map.current.remove();
+      map.remove();
     };
   }, []);
 
@@ -57,7 +57,7 @@ function Map ({offers}) {
     <section
       id='map'
       className='cities__map map'
-      style={{height: '90vh'}}
+      style={{height: MapParams.MAP_HEIGHT}}
       ref={map}
     />
   );

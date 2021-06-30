@@ -3,26 +3,30 @@ import ReactDOM from 'react-dom';
 import offers from './mocks/offers';
 import reviews from './mocks/reviews';
 import App from './components/app';
-import Rating from './components/consts/rating';
+import Rating from './consts/rating';
+import { createStore } from 'redux';
+import { reducer } from './store/reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
+import { Setting } from './consts/consts';
 
-const Setting = {
-  AD_COUNT: 312,
-  CITIES: ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'],
-  PAGE_TYPES: {
-    FAVORITES: 'favorites',
-    MAIN: 'main',
-    OFFER: 'offer',
-  },
-};
+const store = createStore(
+  reducer,
+  composeWithDevTools(),
+);
 
 ReactDOM.render(
-  <App
-    adCount={Setting.AD_COUNT}
-    cities={Setting.CITIES}
-    offers={offers.slice()}
-    reviewGet={reviews.slice()}
-    ratingData={Rating}
-    pageTypes={Setting.PAGE_TYPES}
-  />,
-  document.querySelector('#root'),
-);
+  <React.StrictMode>
+    <Provider store={store}>
+      <App
+        adCount={Setting.AD_COUNT}
+        cities={Setting.CITIES}
+        offers={offers.slice()}
+        reviewGet={reviews.slice()}
+        ratingData={Rating}
+        pageTypes={Setting.PAGE_TYPES}
+      />
+    </Provider>
+
+  </React.StrictMode>,
+  document.getElementById('root'));

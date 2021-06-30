@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function LocationItem ({city}) {
+function LocationItem ({ city, onClick, activeCity }) {
+
   return (
     <li className="locations__item">
-      <a className={city === 'Amsterdam' ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link     tabs__item'} href="#">
+      <a
+        className={`locations__item-link
+        ${city === activeCity ? 'tabs__item--active' : ''} tabs__item`}
+        href="/some/valid/uri"
+        onClick={(evt) => {
+          evt.preventDefault();
+          onClick(city);
+        }}
+      >
         <span>{city}</span>
       </a>
     </li>
@@ -13,5 +22,7 @@ function LocationItem ({city}) {
 
 LocationItem.propTypes = {
   city: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  activeCity: PropTypes.string,
 };
 export default LocationItem;

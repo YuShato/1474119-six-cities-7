@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { MAX_RATING } from './components/consts/consts';
+import { MAX_RATING } from './consts/consts';
 
 export function getReviewDate(date) {
   return {
@@ -18,3 +18,7 @@ export function capitalizeFirstLetter(string) {
 
 export const getOffersByCity = (offers, cityName) =>
   offers.filter((offer) => offer.city.name === cityName);
+
+export function filterOffers (city, places) {
+  return places.filter((offer) => offer.city.name === city);
+}

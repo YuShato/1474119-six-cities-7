@@ -30,6 +30,7 @@ export const Housing = {
 
 export const MapParams = {
   ZOOM: 12,
+  MAP_HEIGHT: '579px',
   CENTER: {
     lat: 52.38333,
     lng: 4.9,
@@ -40,3 +41,14 @@ export const MapParams = {
     iconAnchor: [15, 30],
   },
 };
+
+export const Setting = {
+  CITIES: ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'],
+  PAGE_TYPES: {
+    FAVORITES: 'favorites',
+    MAIN: 'main',
+    OFFER: 'offer',
+  },
+};
+
+export const INITIAL_CITY = Setting.CITIES[0];

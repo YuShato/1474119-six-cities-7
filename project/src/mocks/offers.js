@@ -7,10 +7,10 @@ const offers =  [
         'longitude': 4.85309666406198,
         'zoom': 10,
       },
-      'name': 'Amsterdam',
+      'name': 'Paris',
     },
     'description': [
-      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris.',
       'An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
     ],
     'goods': [
