@@ -8,7 +8,6 @@ import { createStore } from 'redux';
 import { reducer } from './store/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import { Setting } from './consts/consts';
 
 const store = createStore(
   reducer,
@@ -19,12 +18,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App
-        adCount={Setting.AD_COUNT}
-        cities={Setting.CITIES}
         offers={offers.slice()}
         reviewGet={reviews.slice()}
         ratingData={Rating}
-        pageTypes={Setting.PAGE_TYPES}
       />
     </Provider>
 
