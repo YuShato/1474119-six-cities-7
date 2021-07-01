@@ -51,4 +51,11 @@ export const Setting = {
   },
 };
 
+export const SortType = {
+  POPULAR: 'Popular',
+  PRICE_LOW: 'Price: low to high',
+  PRICE_HIGH: 'Price: high to low',
+  RATING_HIGH: 'Top rated first',
+};
+
 export const INITIAL_CITY = Setting.CITIES[0];

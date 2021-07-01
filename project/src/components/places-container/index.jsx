@@ -31,4 +31,3 @@ PlacesContainer.propTypes = {
 };
 
 export default PlacesContainer;
-

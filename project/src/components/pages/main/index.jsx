@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from '../../loyout/header/header';
 import LocationsTabs from '../../loyout/locations-tabs';
 import { ActionCreator } from '../../../store/action';
-import { connect } from 'react-redux';
 import PlacesContainer from '../../places-container';
 import MainEmpty from '../../loyout/main-empty';
+import {setSorting} from '../../../common';
 
 function MainPage ({onCitySelect, city, offers})  {
 
@@ -36,7 +37,7 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: setSorting(state.offers, state.activeSort),
   city: state.city,
 });
 
