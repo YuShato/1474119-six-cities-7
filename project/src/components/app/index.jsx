@@ -7,18 +7,13 @@ import OfferPage from '../pages/room';
 import NotFoundPage  from '../pages/page-not-found';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-function App ({cities, offers, reviewGet, ratingData, pageTypes}) {
-  const {FAVORITES, MAIN, OFFER} = pageTypes;
+function App ({offers, reviewGet, ratingData}) {
 
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <MainPage
-            cities={cities}
-            offers={offers}
-            pageType={MAIN}
-          />
+          <MainPage />
         </Route>
         <Route path="/login" exact>
           <LoginPage />
@@ -26,7 +21,6 @@ function App ({cities, offers, reviewGet, ratingData, pageTypes}) {
         <Route path="/favorites" exact>
           <FavoritesPage
             offers={offers}
-            pageType={FAVORITES}
           />
         </Route>
         <Route path="/offer/:id?" exact>
@@ -34,7 +28,6 @@ function App ({cities, offers, reviewGet, ratingData, pageTypes}) {
             offers={offers}
             reviewGet={reviewGet}
             ratingData={ratingData}
-            pageType={OFFER}
           />
         </Route>
         <Route>
@@ -46,11 +39,9 @@ function App ({cities, offers, reviewGet, ratingData, pageTypes}) {
 }
 
 App.propTypes = {
-  cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object),
   reviewGet: PropTypes.arrayOf(PropTypes.object),
   ratingData: PropTypes.arrayOf(PropTypes.object),
-  pageTypes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default App;

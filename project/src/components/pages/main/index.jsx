@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import PlacesList from '../../loyout/places-list';
+import { connect } from 'react-redux';
 import Header from '../../loyout/header/header';
 import LocationsTabs from '../../loyout/locations-tabs';
-import Map from '../../loyout/map';
 import { ActionCreator } from '../../../store/action';
-import { connect } from 'react-redux';
+import PlacesContainer from '../../places-container';
+import MainEmpty from '../../loyout/main-empty';
+import {setSorting} from '../../../common';
 
 function MainPage ({onCitySelect, city, offers})  {
 
@@ -23,46 +24,7 @@ function MainPage ({onCitySelect, city, offers})  {
             <LocationsTabs city={city} activeCity={city} getActiveCity={onCitySelect} />
           </section>
         </div>
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in {city}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li
-                    className="places__option places__option--active"
-                    tabIndex={0}
-                  >
-                    Popular
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: low to high
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: high to low
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Top rated first
-                  </li>
-                </ul>
-              </form>
-              <PlacesList offers={offers}  pageType='main'/>
-            </section>
-            <div className="cities__right-section">
-              {offers ?
-                <Map offers={offers} /> :
-                <section className="cities__map map"></section>}
-            </div>
-          </div>
-        </div>
+        {offers.length ? <PlacesContainer offers={offers} city={city}/> : <MainEmpty city={city} />}
       </main>
     </div>
   );
@@ -75,7 +37,7 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: setSorting(state.offers, state.activeSort),
   city: state.city,
 });
 
