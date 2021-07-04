@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import MainPage from '../pages/main';
 import FavoritesPage from '../pages/favorites';
 import LoginPage from '../pages/sign-in';
@@ -7,7 +6,7 @@ import OfferPage from '../pages/room';
 import NotFoundPage  from '../pages/page-not-found';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-function App ({offers, reviewGet, ratingData}) {
+function App () {
 
   return (
     <BrowserRouter>
@@ -19,16 +18,10 @@ function App ({offers, reviewGet, ratingData}) {
           <LoginPage />
         </Route>
         <Route path="/favorites" exact>
-          <FavoritesPage
-            offers={offers}
-          />
+          <FavoritesPage />
         </Route>
         <Route path="/offer/:id?" exact>
-          <OfferPage
-            offers={offers}
-            reviewGet={reviewGet}
-            ratingData={ratingData}
-          />
+          <OfferPage/>
         </Route>
         <Route>
           <NotFoundPage />
@@ -37,11 +30,5 @@ function App ({offers, reviewGet, ratingData}) {
     </BrowserRouter>
   );
 }
-
-App.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object),
-  reviewGet: PropTypes.arrayOf(PropTypes.object),
-  ratingData: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default App;

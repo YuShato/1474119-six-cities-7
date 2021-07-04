@@ -6,13 +6,31 @@ import LocationsTabs from '../../loyout/locations-tabs';
 import { ActionCreator } from '../../../store/action';
 import PlacesContainer from '../../places-container';
 import MainEmpty from '../../loyout/main-empty';
+import LoadingScreen from '../../loyout/loading-screen';
 import {setSorting} from '../../../common';
+import { fetchOffersList } from '../../../store/api-actions';
 
-function MainPage ({onCitySelect, city, offers})  {
+function MainPage ({onCitySelect, city, offers, loadOffersData, ...props})  {
 
-  useEffect(() =>{
-    onCitySelect(city);
-  }, [onCitySelect, city]);
+  useEffect(() => {
+    if (!offers.error && !offers.loading && offers.data === null) {
+      loadOffersData();
+    }
+  }, [offers]);
+
+  if (offers.loading) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
+  if (offers.error) {
+    return <div>error: {offers.error}</div>;
+  }
+
+  if (!offers.data) {
+    return null;
+  }
 
   return (
     <div className="page page--gray page--main">
@@ -24,7 +42,7 @@ function MainPage ({onCitySelect, city, offers})  {
             <LocationsTabs city={city} activeCity={city} getActiveCity={onCitySelect} />
           </section>
         </div>
-        {offers.length ? <PlacesContainer offers={offers} city={city}/> : <MainEmpty city={city} />}
+        {offers.data.length ? <PlacesContainer offers={offers.data} city={city} {...props}/> : <MainEmpty city={city} />}
       </main>
     </div>
   );
@@ -34,6 +52,7 @@ MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   onCitySelect: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loadOffersData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -45,6 +64,9 @@ const mapDispatchToProps = (dispatch) => ({
   onCitySelect(city) {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.filteredOffers());
+  },
+  loadOffersData() {
+    dispatch(fetchOffersList());
   },
 });
 
