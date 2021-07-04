@@ -1,6 +1,5 @@
 import { INITIAL_CITY, SortType } from '../consts/consts';
 import { ActionType } from './action';
-import offers from '../mocks/offers';
 import { filterOffers } from '../common';
 
 
