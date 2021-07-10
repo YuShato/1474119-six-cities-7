@@ -167,6 +167,12 @@ const reducer = (state, action) => {
         },
       };
 
+    case ActionType.AUTHORIZATION_INFO:
+      return {
+        ...state,
+        authorizationInfo: action.payload,
+      };
+
     default:
       return state;
   }

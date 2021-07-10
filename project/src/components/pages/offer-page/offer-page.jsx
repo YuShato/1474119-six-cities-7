@@ -28,6 +28,7 @@ function OfferPage({
   const match = useRouteMatch();
   const pathId = parseInt(match.params.id.slice(1), 10);
 
+
   useEffect(() => {
     if (openedOffer.id !== pathId) {
       loadNearOffersSuccess(pathId);

@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useRef} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
 import Header from '../../../components/layout/header/header';
-import AuthorizationForm from '../../../components/authorization/form';
-import { AuthorizationStatus } from '../../../const';
+import  {login } from '../../../store/api-actions';
+// import AuthorizationForm from '../../../components/authorization/form';
+// import { AuthorizationStatus } from '../../../const';
 
-function LoginPage({user}) {
+function LoginPage({onSubmit}) {
+  const loginRef = useRef();
+  const passwordRef = useRef();
 
   const history = useHistory();
 
-  if (user.status === AuthorizationStatus.AUTH) {
-    history.push('/');
-  }
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    onSubmit({
+      login: loginRef.current.value,
+      password: passwordRef.current.value,
+    });
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -22,7 +30,42 @@ function LoginPage({user}) {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <AuthorizationForm />
+            <form
+              className="login__form form"
+              action="#"
+              method="post"
+              onSubmit={handleSubmit}
+            >
+              <div className="login__input-wrapper form__input-wrapper">
+                <label className="visually-hidden">E-mail</label>
+                <input
+                  ref={loginRef}
+                  className="login__input form__input"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div className="login__input-wrapper form__input-wrapper">
+                <label className="visually-hidden">Password</label>
+                <input
+                  ref={passwordRef}
+                  className="login__input form__input"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button
+                onClick={() => history.push('/')}
+                className="login__submit form__submit button"
+                type="submit"
+              >
+                Sign in
+              </button>
+            </form>
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
@@ -38,18 +81,14 @@ function LoginPage({user}) {
 }
 
 LoginPage.propTypes = {
-  user: PropTypes.shape({
-    status: PropTypes.string,
-    data: PropTypes.shape({
-      email: PropTypes.string,
-      password: PropTypes.string,
-    }),
-  }),
+  onSubmit: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers,
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(authData) {
+    dispatch(login(authData));
+  },
 });
 
 export {LoginPage};
-export default connect(mapStateToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(LoginPage);
