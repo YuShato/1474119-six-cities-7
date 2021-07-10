@@ -1,37 +1,22 @@
-import moment from 'moment';
-import { MAX_RATING, SortType } from './consts/consts';
+import dayjs from 'dayjs';
 
-export function getReviewDate(date) {
-  return {
-    userDate: moment(date).format('MMMM YYYY'),
-    htmlDate:  moment(date).format('YYYY-MM-DD'),
-  };
-}
+export const getMonth = (date) => new Date(date).toLocaleString('ru', {
+  month: 'long',
+});
 
-export function getRating(rating) {
-  return rating/MAX_RATING*100;
-}
+export const getYear = (date) => new Date(date).getFullYear();
 
-export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+export const getDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
-export const getOffersByCity = (offers, cityName) =>
-  offers.filter((offer) => offer.city.name === cityName);
-
-export function filterOffers (city, places) {
-  return places.filter((offer) => offer.city.name === city);
-}
-
-export function setSorting (offer, sortType) {
-  switch (sortType) {
-    case SortType.PRICE_LOW:
-      return offer.sort((a,b) => (a.price - b.price));
-    case SortType.PRICE_HIGH:
-      return offer.sort((a, b) => (b.price - a.price));
-    case SortType.RATING_HIGH:
-      return offer.sort((a,b) => (b.rating - a.rating));
+export const getSorting = (offers, sortOption) => {
+  switch (sortOption.id) {
+    case 'price-from-low':
+      return offers.sort((a, b) => a.price - b.price);
+    case 'price-from-high':
+      return offers.sort((a, b) => b.price - a.price);
+    case 'price-top-rated':
+      return offers.sort((a, b) => b.rating - a.rating);
     default:
-      return offer;
+      return offers;
   }
-}
+};

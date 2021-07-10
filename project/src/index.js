@@ -1,35 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
 import { createStore, applyMiddleware } from 'redux';
-import { reducer, initialState } from './store/reducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import {createAPI, AuthorizationStatus} from './store/api';
-import {ActionCreator} from './store/action';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import  {checkAuth} from './store/api-actions';
+
+import App from './components/app/app';
+import { CITIES, SORT_LIST, AuthorizationStatus } from './const';
+import { createAPI } from './api';
+
+import { reducer } from './store/reducer';
+import { ActionCreator } from './store/action';
+import { checkAuth } from './store/api-actions';
+import { redirect } from './store/middlewares/redirect';
+
+const preloadedState = {
+  city: CITIES[0],
+  sortOption: SORT_LIST[0],
+  activeOfferId: null,
+  offers: {
+    data: null,
+    loading: false,
+    error: null,
+  },
+  user: {
+    status: AuthorizationStatus.NO_AUTH,
+    data: null,
+  },
+  openedOffer: null,
+  nearOffers: {
+    data: null,
+    loading: false,
+    error: null,
+  },
+  reviews: {
+    data: null,
+    loading: false,
+    error: null,
+  },
+  favoriteOffers: {
+    data: null,
+    loading: false,
+    error: null,
+  },
+};
 
 const api = createAPI(() =>
   store.dispatch(
-    ActionCreator.requiredAuthorization(AuthorizationStatus.NO_AUTH),
+    ActionCreator.authorizationFailured(),
   ),
 );
 
 const store = createStore(
   reducer,
-  initialState,
+  preloadedState,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(redirect),
   ),
 );
 
-store.dispatch(checkAuth());
-
-ReactDOM.render(
-  <React.StrictMode>
+store.dispatch(checkAuth()).then(() => {
+  ReactDOM.render(
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root'));
+    </Provider>,
+    document.querySelector('#root'),
+  );
+});

@@ -1,50 +1,26 @@
-import { INITIAL_CITY, SortType } from '../consts/consts';
 import { ActionType } from './action';
-import { filterOffers } from '../common';
-import { AuthorizationStatus } from './api';
+import { SORT_LIST } from '../const';
+import {  AuthorizationStatus} from '../const';
 
-const initialState = {
-  city: INITIAL_CITY,
-  activeSort: SortType.POPULAR,
-  activeOffer: false,
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
-
-  offers: {
-    data: null,
-    loading: false,
-    error: null,
-  },
-};
-
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
+    case ActionType.SET_CITY:
       return {
         ...state,
         city: action.payload,
+        sortOption: SORT_LIST[0],
       };
 
-    case ActionType.FILTERED_OFFERS:
+    case ActionType.SET_SORT_OPTION:
       return {
         ...state,
-        offers: filterOffers(state.city, initialState.offers),
+        sortOption: action.payload,
       };
 
-    case ActionType.SET_SORT:
+    case ActionType.HOVER_OFFER:
       return {
         ...state,
-        activeSort: action.payload,
-      };
-
-    case ActionType.SET_ACTIVE_OFFER:
-      return {
-        ...state,
-        activeOffer: action.payload,
-      };
-
-    case ActionType.REMOVE_ACTIVE_OFFER:
-      return {
-        activeOffer: false,
+        activeOfferId: action.payload,
       };
 
     case ActionType.OFFERS_REQUEST:
@@ -77,10 +53,118 @@ const reducer = (state = initialState, action) => {
         },
       };
 
-    case ActionType.REQUIRED_AUTHORIZATION:
+    case ActionType.AUTHORIZATION_SUCCESS:
       return {
         ...state,
-        authorizationStatus: action.payload,
+        user: {
+          status: AuthorizationStatus.AUTH,
+          data: action.payload,
+        },
+      };
+
+    case ActionType.AUTHORIZATION_FAILURED:
+      return {
+        ...state,
+        user: {
+          status: AuthorizationStatus.NO_AUTH,
+          data: null,
+        },
+      };
+
+    case ActionType.LOAD_OFFER:
+      return {
+        ...state,
+        openedOffer: action.payload,
+      };
+
+    case ActionType.NEAR_OFFERS_SUCCESS:
+      return {
+        ...state,
+        nearOffers: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+
+    case ActionType.NEAR_OFFERS_REQUEST:
+      return {
+        ...state,
+        nearOffers: {
+          data: null,
+          loading: true,
+          error: null,
+        },
+      };
+
+    case ActionType.NEAR_OFFERS_FAILURE:
+      return {
+        ...state,
+        nearOffers: {
+          data: null,
+          loading: false,
+          error: action.payload,
+        },
+      };
+
+    case ActionType.REVIEWS_SUCCESS:
+      return {
+        ...state,
+        reviews: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+
+    case ActionType.REVIEWS_REQUEST:
+      return {
+        ...state,
+        reviews: {
+          data: null,
+          loading: true,
+          error: null,
+        },
+      };
+
+    case ActionType.REVIEWS_FAILURE:
+      return {
+        ...state,
+        reviews: {
+          data: null,
+          loading: false,
+          error: action.payload,
+        },
+      };
+
+    case ActionType.FAVORITE_OFFERS_SUCCESS:
+      return {
+        ...state,
+        favoriteOffers: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+
+    case ActionType.FAVORITE_OFFERS_REQUEST:
+      return {
+        ...state,
+        favoriteOffers: {
+          data: null,
+          loading: true,
+          error: null,
+        },
+      };
+
+    case ActionType.FAVORITE_OFFERS_FAILURE:
+      return {
+        ...state,
+        favoriteOffers: {
+          data: null,
+          loading: false,
+          error: action.payload,
+        },
       };
 
     default:
@@ -88,4 +172,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, initialState};
+export {reducer};

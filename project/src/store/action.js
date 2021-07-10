@@ -1,13 +1,23 @@
 export const ActionType = {
-  CHANGE_CITY: 'cities/CHANGE_CITY',
-  FILTERED_OFFERS: 'cities/FILTERED_OFFERS',
-  SET_SORT: 'cities/SET_SORT',
-  SET_ACTIVE_OFFER: 'cities/SET_ACTIVE_OFFER',
-  REMOVE_ACTIVE_OFFER: 'cities/REMOVE_ACTIVE_OFFER',
+  SET_CITY: 'city/setCity',
+  SET_SORT_OPTION: 'sortOption/setSortOption',
+  HOVER_OFFER: 'offer/hoverOffer',
   OFFERS_REQUEST: 'offers/request',
   OFFERS_SUCCESS: 'offers/success',
   OFFERS_FAILURE: 'offers/failure',
-  REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
+  REDIRECT_TO_ROUTE: '/redirectToRoute',
+  AUTHORIZATION_SUCCESS: 'auth/success',
+  AUTHORIZATION_FAILURED: 'auth/failured',
+  LOAD_OFFER: 'data/loadOffer',
+  REVIEWS_REQUEST: 'reviews/request',
+  REVIEWS_SUCCESS: 'reviews/success',
+  REVIEWS_FAILURE: 'reviews/failure',
+  FAVORITE_OFFERS_REQUEST: 'favoriteOffers/request',
+  FAVORITE_OFFERS_SUCCESS: 'favoriteOffers/success',
+  FAVORITE_OFFERS_FAILURE: 'favoriteOffers/failure',
+  NEAR_OFFERS_REQUEST: 'nearOffers/request',
+  NEAR_OFFERS_SUCCESS: 'nearOffers/success',
+  NEAR_OFFERS_FAILURE: 'nearOffers/failure',
 };
 
 const OfferActionCreator = {
@@ -22,37 +32,72 @@ const OfferActionCreator = {
     type: ActionType.OFFERS_FAILURE,
     payload: error,
   }),
+  loadOffer: (offer) => ({
+    type: ActionType.LOAD_OFFER,
+    payload: offer,
+  }),
+  requestNearOffers: () => ({
+    type: ActionType.NEAR_OFFERS_REQUEST,
+  }),
+  loadNearOffersSuccess: (offers) => ({
+    type: ActionType.NEAR_OFFERS_SUCCESS,
+    payload: offers,
+  }),
+  loadNearOffersFailure: (error) => ({
+    type: ActionType.NEAR_OFFERS_FAILURE,
+    payload: error,
+  }),
+  requestFavoriteOffers: () => ({
+    type: ActionType.FAVORITE_OFFERS_REQUEST,
+  }),
+  loadFavoriteOffersSuccess: (offers) => ({
+    type: ActionType.FAVORITE_OFFERS_SUCCESS,
+    payload: offers,
+  }),
+  loadFavoriteOffersFailure: (error) => ({
+    type: ActionType.FAVORITE_OFFERS_FAILURE,
+    payload: error,
+  }),
+};
+
+const ReviewActionCreator = {
+  loadReviewsSuccess: (reviews) => ({
+    type: ActionType.REVIEWS_SUCCESS,
+    payload: reviews,
+  }),
+  requestReviews: () => ({
+    type: ActionType.REVIEWS_REQUEST,
+  }),
+  loadReviewsFailure: (error) => ({
+    type: ActionType.REVIEWS_FAILURE,
+    payload: error,
+  }),
 };
 
 export const ActionCreator = {
-  changeCity: (city) => ({
-    type: ActionType.CHANGE_CITY,
+  setCity: (city) => ({
+    type: ActionType.SET_CITY,
     payload: city,
   }),
-
-  filteredOffers: (city) => ({
-    type: ActionType.FILTERED_OFFERS,
-    payload: city,
+  setSortOption: (sortOption) => ({
+    type: ActionType.SET_SORT_OPTION,
+    payload: sortOption,
   }),
-
-  setSort: (sort) => ({
-    type: ActionType.SET_SORT,
-    payload: sort,
-  }),
-
-  setActiveOffer: (id) => ({
-    type: ActionType.SET_ACTIVE_OFFER,
+  hoverOffer: (id) => ({
+    type: ActionType.HOVER_OFFER,
     payload: id,
   }),
-
-  removeActiveOffer: () => ({
-    type: ActionType.REMOVE_ACTIVE_OFFER,
+  redirectToRoute: (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: url,
   }),
-
-  requiredAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
+  authorizationSuccess: (info) => ({
+    type: ActionType.AUTHORIZATION_SUCCESS,
+    payload: info,
   }),
-
+  authorizationFailured: () => ({
+    type: ActionType.AUTHORIZATION_FAILURED,
+  }),
   ...OfferActionCreator,
+  ...ReviewActionCreator,
 };
