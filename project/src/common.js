@@ -1,12 +1,12 @@
-import dayjs from 'dayjs';
+import moment from 'moment';
+import { MAX_RATING } from './const';
 
-export const getMonth = (date) => new Date(date).toLocaleString('ru', {
-  month: 'long',
-});
-
-export const getYear = (date) => new Date(date).getFullYear();
-
-export const getDate = (date) => dayjs(date).format('YYYY-MM-DD');
+export function getReviewDate(date) {
+  return {
+    userDate: moment(date).format('MMMM YYYY'),
+    htmlDate:  moment(date).format('YYYY-MM-DD'),
+  };
+}
 
 export const getSorting = (offers, sortOption) => {
   switch (sortOption.id) {
@@ -20,3 +20,7 @@ export const getSorting = (offers, sortOption) => {
       return offers;
   }
 };
+
+export function getRating(rating) {
+  return rating/MAX_RATING*100;
+}

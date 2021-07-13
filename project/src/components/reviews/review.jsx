@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getMonth, getYear, getDate } from '../../common';
-import { MAX_RATING } from '../../const';
+import { getRating, getReviewDate } from '../../common';
 
 function Review({review}) {
   const {
@@ -29,13 +28,13 @@ function Review({review}) {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${(rating / MAX_RATING) * 100}%`}} />
+            <span style={{width:`${getRating(rating)}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <p className="reviews__text">{comment}</p>
-        <time className="reviews__time" dateTime={getDate(date)}>
-          {`${getMonth(date)} ${getYear(date)}`}
+        <time className="reviews__time" dateTime={getReviewDate(date).htmlDate}>
+          {getReviewDate(date).userDate}
         </time>
       </div>
     </li>

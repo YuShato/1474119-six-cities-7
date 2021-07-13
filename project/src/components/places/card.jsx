@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { Housing, ImageSize, MAX_RATING } from '../../const';
+import { Housing, ImageSize } from '../../const';
+import { getRating } from '../../common';
 
 function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
 
@@ -70,7 +71,7 @@ function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${(rating / MAX_RATING) * 100}%`}} />
+            <span style={{width:`${getRating(rating)}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

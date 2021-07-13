@@ -12,7 +12,7 @@ export const fetchOffersList = () => (dispatch, _getState, api) => {
 
 export const fetchOffer = (id) => (dispatch, _getState, api) =>
   api
-    .get(`/hotels/${  id}`)
+    .get(`/hotels/${id}`)
     .then(({data}) => dispatch(ActionCreator.loadOffer(data)))
     .catch((err) => {
       notExisteOffer(err, () =>

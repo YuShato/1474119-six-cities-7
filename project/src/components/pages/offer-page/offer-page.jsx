@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 
-import { Housing, MAX_RATING, AuthorizationStatus } from '../../../const';
+import { Housing, AuthorizationStatus } from '../../../const';
+import { getRating } from '../../../common';
 import Header from '../../layout/header/header';
 import ReviewsList from '../../../components/reviews/review';
 import ReviewsForm from '../../../components/reviews/form';
@@ -34,10 +35,9 @@ function OfferPage({
       loadNearOffersSuccess(pathId);
       loadReviews(pathId);
       loadOffer(pathId);
-
-      // return <LoadingScreen />;
     }
   }, [openedOffer.id]);
+
 
   const {
     is_premium: isPremium,
@@ -93,7 +93,7 @@ function OfferPage({
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${(rating / MAX_RATING) * 100}%`}} />
+                  <span style={{width:`${getRating(rating)}%`}}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">
