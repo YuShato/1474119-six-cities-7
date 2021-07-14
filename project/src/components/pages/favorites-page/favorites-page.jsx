@@ -18,11 +18,11 @@ function FavoritesPage({favoriteOffers, changeCity, loadFavoriteOffers}) {
     if (!favoriteOffers.data) {
       loadFavoriteOffers();
     }
-  }, [favoriteOffers]);
+  }, [favoriteOffers, loadFavoriteOffers]);
 
   useEffect(() => {
     loadFavoriteOffers();
-  }, []);
+  }, [loadFavoriteOffers]);
 
   if (favoriteOffers.loading) {
     return <LoadingScreen />;
@@ -48,7 +48,7 @@ function FavoritesPage({favoriteOffers, changeCity, loadFavoriteOffers}) {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {cityList.map((city, i) => (
+              {cityList.map((city) => (
                 <li
                   key={nanoid()}
                   className="favorites__locations-items"

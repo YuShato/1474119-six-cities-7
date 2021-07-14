@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 
 function Authorization({user}) {
   const {status, data} = user;
@@ -10,7 +11,7 @@ function Authorization({user}) {
 
   const handelPushLoginPage = (evt) => {
     evt.preventDefault();
-    history.push('/login');
+    history.push(AppRoute.LOGIN);
   };
 
   if (status === AuthorizationStatus.AUTH) {

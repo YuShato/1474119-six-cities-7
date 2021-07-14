@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 const typesParams = {
   MAIN: {
     mixClass: 'cities__map',
-    height: 736,
+    height: 512,
   },
   PROPERTY: {
     mixClass: 'property__map',

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { login } from '../../store/api-actions';
+import { AppRoute } from '../../const';
 
 function AuthorizationForm({onSubmit}) {
   const loginRef = useRef();
@@ -50,7 +51,7 @@ function AuthorizationForm({onSubmit}) {
         />
       </div>
       <button
-        onClick={() => history.push('/')}
+        onClick={() => history.push(AppRoute.MAIN)}
         className="login__submit form__submit button"
         type="submit"
       >

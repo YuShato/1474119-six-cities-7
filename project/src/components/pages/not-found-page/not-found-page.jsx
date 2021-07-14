@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import { AppRoute } from '../../../const';
 
 function NotFoundPage ()  {
   return (
@@ -9,7 +10,7 @@ function NotFoundPage ()  {
         <br />
         <small>Page not found</small>
       </h1>
-      <Link to="/">Go to main page</Link>
+      <Link to={AppRoute.MAIN}>Go to main page</Link>
     </Fragment>
   );
 }

@@ -38,7 +38,7 @@ function ReviewsForm({openedOffer, submitCommentOnServer}) {
           Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {Array.from(new Array(MAX_RATING)).map((field, index) => (
+        {Array.from(new Array(MAX_RATING)).map((index) => (
           <Star
             key={nanoid()}
             serialNumber={MAX_RATING - index}

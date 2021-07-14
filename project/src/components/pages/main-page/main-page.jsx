@@ -18,11 +18,11 @@ function MainPage ({city, onCityClick, offers, loadOffersData, ...props}) {
     if (!offers.error && !offers.loading && offers.data === null) {
       loadOffersData();
     }
-  },  [offers.error, offers.loading, offers.data]);
+  },  [offers.error, offers.loading, offers.data, loadOffersData]);
 
   useEffect(() => {
     loadOffersData();
-  }, []);
+  }, [loadOffersData]);
 
   if (offers.loading) {
     return (

@@ -29,14 +29,13 @@ function OfferPage({
   const match = useRouteMatch();
   const pathId = parseInt(match.params.id.slice(1), 10);
 
-
   useEffect(() => {
     if (openedOffer.id !== pathId) {
       loadNearOffersSuccess(pathId);
       loadReviews(pathId);
       loadOffer(pathId);
     }
-  }, [openedOffer.id]);
+  }, [loadNearOffersSuccess, loadOffer, loadReviews, openedOffer.id, pathId]);
 
 
   const {
@@ -118,7 +117,7 @@ function OfferPage({
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {goods.map((service, index) => (
+                  {goods.map((service) => (
                     <li className="property__inside-item" key={nanoid()}>
                       {service}
                     </li>
@@ -148,7 +147,7 @@ function OfferPage({
                   <span className="property__user-name">{name}</span>
                 </div>
                 <div className="property__description">
-                  {description.map((text, index) => (
+                  {description.map((text) => (
                     <p className="property__text" key={nanoid()}>
                       {text}
                     </p>

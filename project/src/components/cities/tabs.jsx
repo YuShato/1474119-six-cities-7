@@ -8,7 +8,7 @@ import { CITIES } from '../../const';
 function CitiesTabs({selectedCity, onCityClick}) {
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((city, key) => (
+      {CITIES.map((city) => (
         <li key={nanoid()} className="locations__item">
           <a
             className={classNames('locations__item-link', 'tabs__item', {

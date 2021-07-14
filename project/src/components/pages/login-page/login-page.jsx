@@ -5,8 +5,7 @@ import { useHistory } from 'react-router';
 
 import Header from '../../../components/layout/header/header';
 import  {login } from '../../../store/api-actions';
-// import AuthorizationForm from '../../../components/authorization/form';
-// import { AuthorizationStatus } from '../../../const';
+import { AppRoute } from '../../../const';
 
 function LoginPage({onSubmit}) {
   const loginRef = useRef();
@@ -59,7 +58,7 @@ function LoginPage({onSubmit}) {
                 />
               </div>
               <button
-                onClick={() => history.push('/')}
+                onClick={() => history.push(AppRoute.MAIN)}
                 className="login__submit form__submit button"
                 type="submit"
               >
