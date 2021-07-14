@@ -37,7 +37,9 @@ function Map({location, offers, type, activeOfferId}) {
       .addTo(mapRef.current);
 
     return () => {
-      mapRef.current.remove();
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
     };
   }, [location]);
 
@@ -63,7 +65,9 @@ function Map({location, offers, type, activeOfferId}) {
     });
 
     return () => {
-      mapRef.current.removeLayer(leaflet);
+      if (mapRef.current) {
+        mapRef.current.removeLayer(leaflet);
+      }
     };
   }, [offers, activeOfferId]);
 
