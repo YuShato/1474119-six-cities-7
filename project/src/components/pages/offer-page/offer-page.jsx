@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 
-import { Housing, AuthorizationStatus } from '../../../const';
+import { HousingType, AuthorizationStatus } from '../../../const';
 import { getRating } from '../../../common';
 import Header from '../../layout/header/header';
 import ReviewsList from '../../../components/reviews/review';
@@ -101,7 +101,7 @@ function OfferPage({
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {Housing[type]}
+                  {HousingType[type]}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedrooms} Bedrooms

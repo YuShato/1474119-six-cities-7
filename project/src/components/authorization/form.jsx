@@ -36,6 +36,7 @@ function AuthorizationForm({onSubmit}) {
           type="email"
           name="email"
           placeholder="Email"
+          autoComplete = "username"
           required
         />
       </div>
@@ -44,8 +45,9 @@ function AuthorizationForm({onSubmit}) {
         <input
           ref={passwordRef}
           className="login__input form__input"
-          type="password"
+          type = "password"
           name="password"
+          autoComplete = "current-password"
           placeholder="Password"
           required
         />

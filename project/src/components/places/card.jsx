@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { Housing, ImageSize } from '../../const';
+import { HousingType, ImageSize } from '../../const';
 import { getRating } from '../../common';
 
 function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
@@ -47,7 +47,7 @@ function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
             src={previewImage}
             width={pageType === 'favorites' ? ImageSize.SMALL.width : ImageSize.LARGE.width}
             height={pageType === 'favorites' ? ImageSize.SMALL.width : ImageSize.LARGE.height}
-            alt={Housing[type]}
+            alt={HousingType[type]}
           />
         </a>
       </div>
@@ -76,9 +76,9 @@ function PlaceCard ({pageType, offer, handleMouseEnter, handleMouseOut}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:${offer.id}`}>{title}</Link>
+          <Link to={`/offer/${offer.id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{Housing[type]}</p>
+        <p className="place-card__type">{HousingType[type]}</p>
       </div>
     </article>
   );

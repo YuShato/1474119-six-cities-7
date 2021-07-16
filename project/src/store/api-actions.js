@@ -63,5 +63,5 @@ export const login = ({login: email, password}) => (
   api
     .post(APIRoutes.LOGIN, {email, password})
     .then(({data}) => dispatch(ActionCreator.authorizationSuccess(data)))
-    .then(() => dispatch(ActionCreator.redirectToRoute('/')))
+    .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.MAIN)))
     .catch(() => dispatch(ActionCreator.authorizationFailured()));

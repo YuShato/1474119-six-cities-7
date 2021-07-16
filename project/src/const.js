@@ -32,11 +32,11 @@ export const ImageSize = {
   },
 };
 
-export const Housing = {
-  apartment: 'Apartment',
-  room: 'Private Room',
-  house: 'House',
-  hotel: 'Hotel',
+export const HousingType = {
+  APARTMENT: 'Apartment',
+  ROOM: 'Private Room',
+  HOUSE: 'House',
+  HOTEL: 'Hotel',
 };
 
 export const CITIES = [
@@ -104,10 +104,10 @@ export const AppRoute = {
 
 export const APIRoutes = {
   OFFERS: '/hotels',
-  OFFER: '/hotels/:id',
-  OFFERS_NEARBY: '/hotels/:hotel_id/nearby',
+  OFFER: '/hotels/id',
+  OFFERS_NEARBY: '/hotels/hotel_id/nearby',
   FAVORITES: '/favorite',
-  REVIEWS: '/comments/:hotel_id',
+  REVIEWS: '/comments/hotel_id',
   LOGIN: '/login',
   LOGOUT: '/logout',
 };
@@ -115,4 +115,5 @@ export const APIRoutes = {
 export const AuthorizationStatus = {
   AUTH: 'AUTH',
   NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
 };
