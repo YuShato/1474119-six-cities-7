@@ -65,6 +65,7 @@ export const AppRoute = {
 
 export const ButtonTypes = {
   PLACE: {
+    name: 'PLACE',
     noFavorite: 'place-card__bookmark-button',
     favorite: 'place-card__bookmark-button--active',
     icon: 'place-card__bookmark-icon',
@@ -72,6 +73,7 @@ export const ButtonTypes = {
     height: '19',
   },
   PROPERTY: {
+    name: 'PROPERTY',
     noFavorite: 'property__bookmark-button',
     favorite: 'property__bookmark-button--active',
     icon: 'property__bookmark-icon',

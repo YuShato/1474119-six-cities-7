@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useRouteMatch} from 'react-router-dom';
-import {MAX_PROPERTY_IMAGES, MAX_NUMBER_PIN, PlaceSettings} from '../../../common/const';
+import {MAX_PROPERTY_IMAGES, MAX_NUMBER_PIN, PlaceSettings, ButtonTypes} from '../../../common/const';
 import {getNumberStars} from '../../../common/utils';
 import ReviewWrapper from '../../review-wrapper/review-wrapper';
 import Map from '../../map/map';
@@ -76,7 +76,7 @@ function OfferPage() {
                 <h1 className="property__name" data-testid="property-name">
                   {title}
                 </h1>
-                <ButtonIsFavorite nameButton={'PROPERTY'} isFavorite={isFavorite} id={id}/>
+                <ButtonIsFavorite nameButton={ButtonTypes.PROPERTY.name} isFavorite={isFavorite} id={id}/>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">

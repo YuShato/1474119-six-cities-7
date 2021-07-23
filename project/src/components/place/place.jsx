@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {placePropTypes} from '../../common/prop-types';
 import {getNumberStars, getProperty} from '../../common/utils';
-import {PlaceSettings} from '../../common/const';
+import {ButtonTypes, PlaceSettings} from '../../common/const';
 import ButtonIsFavorite from '../layouts/button-is-favorite/button-is-favorite';
 
 function Place({setActivePlace, unsetActivePlace, place, placeName}) {
@@ -50,7 +50,7 @@ function Place({setActivePlace, unsetActivePlace, place, placeName}) {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <ButtonIsFavorite nameButton={'PLACE'} isFavorite={isFavorite} id={String(id)} />
+          <ButtonIsFavorite nameButton={ButtonTypes.PLACE.name} isFavorite={isFavorite} id={String(id)} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

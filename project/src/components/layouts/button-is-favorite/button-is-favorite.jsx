@@ -17,7 +17,7 @@ function ButtonIsFavorite({id, isFavorite, nameButton}) {
         id,
         status: Number(!isFavorite),
       }));
-      if (nameButton === 'PROPERTY') {
+      if (nameButton === ButtonTypes.PROPERTY.name) {
         dispatch(changeIsFavoriteProperty());
       }
     }
