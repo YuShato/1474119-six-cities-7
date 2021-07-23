@@ -1,67 +1,94 @@
-import {ActionCreator} from './action';
-import {APIRoutes, AppRoute} from '../const';
-import { notExisteOffer } from '../api';
+import {
+  requireAuthorization,
+  authorizationInfo,
+  redirectToRoute,
+  loadPlaces,
+  loadFavoritesPlaces,
+  loadReviews,
+  updateFavoritePlace,
+  loadPropertyData,
+  loadPropertyNearby,
+  setErrorMessage
+} from './action';
+import {AuthorizationStatus, AppRoute, HttpCode} from '../common/const';
+import {adaptPlaceToClient, adaptReviewToClient} from './adapter';
 
-export const fetchOffersList = () => (dispatch, _getState, api) => {
-  dispatch(ActionCreator.requestOffers());
-  api
-    .get(APIRoutes.OFFERS)
-    .then(({data}) => dispatch(ActionCreator.loadOffersSuccess(data)))
-    .catch((e) => dispatch(ActionCreator.loadOffersFailure(e)));
-};
+export const fetchPlaceList = () => (dispatch, _getState, api) => (
+  api.get(AppRoute.HOTELS)
+    .then(({data}) => dispatch(loadPlaces(data.map((place) => adaptPlaceToClient(place)))))
+    .catch(() => {})
+);
 
-export const fetchOffer = (id) => (dispatch, _getState, api) =>
-  api
-    .get(`/hotels/${id}`)
-    .then(({data}) => dispatch(ActionCreator.loadOffer(data)))
+export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
+  api.get(AppRoute.FAVORITE)
+    .then(({data}) => dispatch(loadFavoritesPlaces(data.map((favoritePlace) => adaptPlaceToClient(favoritePlace)))))
+    .catch(() => {})
+);
+
+export const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(AppRoute.LOGIN)
+    .then(({data}) => dispatch(authorizationInfo(data)))
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch(() => {})
+);
+
+export const logIn = ({login: email, password}) => (dispatch, _getState, api) => (
+  api.post(AppRoute.LOGIN, {email, password})
+    .then(({data}) => {
+      localStorage.setItem('token', data.token);
+      dispatch(authorizationInfo(data));
+    })
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
+    .catch(() => {})
+);
+
+export const logOut = () => (dispatch, _getState, api) => (
+  api.get(AppRoute.LOGOUT)
+    .then(() => dispatch(authorizationInfo({})))
+    .then(() => localStorage.removeItem('token'))
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .catch(() => {})
+);
+
+
+export const fetchProperty = (id) => (dispatch, _getState, api) => (
+  Promise.all([
+    api.get(`${AppRoute.HOTELS}/${id}`),
+    api.get(`${AppRoute.HOTELS}/${id}/nearby`),
+  ])
+    .then(([offer, nearby]) => {
+      dispatch(loadPropertyData(adaptPlaceToClient(offer.data)));
+      dispatch(loadPropertyNearby(nearby.data.map((nearbyOffer) => adaptPlaceToClient(nearbyOffer))));
+    })
     .catch((err) => {
-      notExisteOffer(err, () =>
-        dispatch(ActionCreator.redirectToRoute(AppRoute.NOT_FOUND)),
-      );
-    });
+      const {response} = err;
+      switch (response.status) {
+        case HttpCode.NOT_FOUND:
+          dispatch(redirectToRoute(AppRoute.ERROR));
+          break;
 
-export const fetchNearOffers = (id) => (dispatch, _getState, api) =>
-  api
-    .get(`/hotels/${id}/nearby`)
-    .then(({data}) => dispatch(ActionCreator.loadNearOffersSuccess(data)))
-    .catch((e) => dispatch(ActionCreator.loadNearOffersFailure(e)));
+        default:
+          dispatch(setErrorMessage(response.status));
+          break;
+      }
+    })
+);
 
-export const fetchReviews = (id) => (dispatch, _getState, api) =>
-  api
-    .get(`comments/${id}`)
-    .then(({data}) => dispatch(ActionCreator.loadReviewsSuccess(data)));
+export const fetchPropertyReviews = (placeId) => (dispatch, _getState, api) => (
+  api.get(`${AppRoute.COMMENTS}/${placeId}`)
+    .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
+    .catch(() => {})
+);
 
-export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {
-  dispatch(ActionCreator.requestFavoriteOffers());
-  api
-    .get(APIRoutes.FAVORITES)
-    .then(({data}) => dispatch(ActionCreator.loadFavoriteOffersSuccess(data)))
-    .catch((e) => dispatch(ActionCreator.loadFavoriteOffersFailure(e)));
-};
+export const sendPropertyReview = (id, {rating, comment}) => (dispatch, _getState, api) => (
+  api.post(`${AppRoute.COMMENTS}/${id}`, {rating, comment})
+    .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
+    .catch(() => {})
+);
 
-export const submitComment = (id, {review: comment, rating}) => (
-  dispatch,
-  _getState,
-  api,
-) =>
-  api
-    .post(`${APIRoutes.REVIEWS}/${id}`, {comment, rating})
-    .then(({data}) => dispatch(ActionCreator.loadReviewsSuccess(data)))
-    .catch(() => dispatch(ActionCreator.laodReviewsFailured()));
-
-export const checkAuth = () => (dispatch, _getState, api) =>
-  api
-    .get(APIRoutes.LOGIN)
-    .then(({data}) => dispatch(ActionCreator.authorizationSuccess(data)))
-    .catch(() => dispatch(ActionCreator.authorizationFailured()));
-
-export const login = ({login: email, password}) => (
-  dispatch,
-  _getState,
-  api,
-) =>
-  api
-    .post(APIRoutes.LOGIN, {email, password})
-    .then(({data}) => dispatch(ActionCreator.authorizationSuccess(data)))
-    .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.MAIN)))
-    .catch(() => dispatch(ActionCreator.authorizationFailured()));
+export const changeFavorite = ({id, status}) => (dispatch, _getState, api) => (
+  api.post(`/favorite/${id}/${status}`)
+    .then(({data}) => (adaptPlaceToClient(data)))
+    .then((data) => dispatch(updateFavoritePlace(data)))
+);

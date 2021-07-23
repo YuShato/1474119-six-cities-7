@@ -1,98 +1,68 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { connect } from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import PlaceList from '../../place-list/place-list';
+import Map from '../../map/map';
+import CitiesList from '../../cities-list/cities-list';
+import MainEmptyPage from '../main-empty-page/main-empty-page';
+import Header from '../../layouts/header/header';
+import SortingList from '../../sorting-list/sorting-list';
+import LoadingScreen from '../../layouts/loading-screen/loading-screen';
+import {fetchPlaceList} from '../../../store/api-actions';
+import {getPlacesCity, sortPlaces} from '../../../common/utils';
+import { PlaceSettings } from '../../../common/const';
 
-import Header from '../../../components/layout/header/header';
-import CitiesTabs from '../../../components/cities/tabs';
-import CitiesList from '../../../components/cities/list';
-import CitiesEmpty from '../../../components/cities/empty';
-import LoadingScreen from '../../../components/loading-screen/loading-screen';
-import { fetchOffersList } from '../../../store/api-actions';
-import { ActionCreator } from '../../../store/action';
+function MainPage() {
+  const {isDataLoaded, places} = useSelector((state) => state.DATA);
+  const {activeCity, activeSorting} = useSelector((state) => state.PLACES);
+  const placesCurrent = sortPlaces(getPlacesCity(places, activeCity), activeSorting);
 
-
-function MainPage ({city, onCityClick, offers, loadOffersData, ...props}) {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!offers.error && !offers.loading && offers.data === null) {
-      loadOffersData();
+    if (!isDataLoaded) {
+      dispatch(fetchPlaceList());
     }
-  },  [offers.error, offers.loading, offers.data, loadOffersData]);
+  }, [dispatch, isDataLoaded]);
 
-  useEffect(() => {
-    loadOffersData();
-  }, [loadOffersData]);
-
-  if (offers.loading) {
+  if (!isDataLoaded) {
     return (
       <LoadingScreen />
     );
   }
 
-  if (offers.error) {
-    return <div>error: {offers.error}</div>;
-  }
-
-  if (!offers.data) {
-    return null;
-  }
-
   return (
     <div className="page page--gray page--main">
       <Header />
-      <main
-        className={classNames('page__main page__main--index', {
-          'page__main--index-empty': !offers.data.length,
-        })}
-      >
+
+      <main className={`page__main page__main--index ${placesCurrent.length > 0 ? '' : 'page__main--index-empty'}`} data-testid="main">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CitiesTabs selectedCity={city} onCityClick={onCityClick} />
+            <CitiesList />
           </section>
         </div>
-        {offers.data.length
-          ? <CitiesList selectedCity={city} offers={offers.data} {...props} />
-          : <CitiesEmpty />}
+        <div className="cities" data-testid="cities">
+          {placesCurrent.length > 0 ?
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{placesCurrent.length} places to stay in {activeCity}</b>
+                <SortingList />
+                <div className="cities__places-list places__list tabs__content" data-testid="places">
+                  <PlaceList places={placesCurrent} placeName={PlaceSettings.MAIN.type}/>
+                </div>
+              </section>
+              <div className="cities__right-section">
+                <section className="cities__map map">
+                  <Map city={placesCurrent[0].city} places={placesCurrent}/>
+                </section>
+              </div>
+            </div>
+            : <MainEmptyPage activeCity={activeCity}/>}
+        </div>
       </main>
     </div>
   );
 }
 
-MainPage.propTypes = {
-  offers: PropTypes.object,
-  city: PropTypes.object,
-  onCityClick: PropTypes.func,
-  sortOption: PropTypes.object,
-  onHoverOffer: PropTypes.func,
-  activeOfferId: PropTypes.number,
-  onSetSortOption: PropTypes.func,
-  loadOffersData: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  city: state.city,
-  reviews: state.reviews,
-  offers: state.offers,
-  sortOption: state.sortOption,
-  activeOfferId: state.activeOfferId,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onCityClick(city) {
-    dispatch(ActionCreator.setCity(city));
-  },
-  onSetSortOption(sortOption) {
-    dispatch(ActionCreator.setSortOption(sortOption));
-  },
-  onHoverOffer(id) {
-    dispatch(ActionCreator.hoverOffer(id));
-  },
-  loadOffersData() {
-    dispatch(fetchOffersList());
-  },
-});
-
-export {MainPage};
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default MainPage;

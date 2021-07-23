@@ -1,103 +1,79 @@
+import {createAction} from '@reduxjs/toolkit';
+
 export const ActionType = {
-  SET_CITY: 'city/setCity',
-  SET_SORT_OPTION: 'sortOption/setSortOption',
-  HOVER_OFFER: 'offer/hoverOffer',
-  OFFERS_REQUEST: 'offers/request',
-  OFFERS_SUCCESS: 'offers/success',
-  OFFERS_FAILURE: 'offers/failure',
-  REDIRECT_TO_ROUTE: '/redirectToRoute',
-  AUTHORIZATION_SUCCESS: 'auth/success',
-  AUTHORIZATION_FAILURED: 'auth/failured',
-  LOAD_OFFER: 'data/loadOffer',
-  REVIEWS_REQUEST: 'reviews/request',
-  REVIEWS_SUCCESS: 'reviews/success',
-  REVIEWS_FAILURE: 'reviews/failure',
-  FAVORITE_OFFERS_REQUEST: 'favoriteOffers/request',
-  FAVORITE_OFFERS_SUCCESS: 'favoriteOffers/success',
-  FAVORITE_OFFERS_FAILURE: 'favoriteOffers/failure',
-  NEAR_OFFERS_REQUEST: 'nearOffers/request',
-  NEAR_OFFERS_SUCCESS: 'nearOffers/success',
-  NEAR_OFFERS_FAILURE: 'nearOffers/failure',
+  AUTHORIZATION_INFO: 'user/authorizationInfo',
+  CHANGE_CITY: 'places/changeCity',
+  CHANGE_SORTING: 'places/changeSorting',
+  GET_ACTIVE_PLACE: 'places/getActivePlace',
+  LOAD_PLACES: 'data/loadPlaces',
+  REDIRECT_TO_ROUTE: 'data/redirectToRoute',
+  LOAD_FAVORITES_PLACES: 'data/loadFavoritesPlaces',
+  LOAD_REVIEWS: 'data/loadReviews',
+  RESET_IS_REVIEWS_LOADED: 'data/resetIsReviewsLoaded',
+  UPDATE_FAVORITE_PLACE: 'data/updateFavoritePlace',
+  LOAD_PROPERTY_DATA: 'data/loadPropertyData',
+  LOAD_PROPERTY_NEARBY: 'data/loadPropertyNearby',
+  SET_ERROR_MESSAGE: 'data/setErrorMessage',
+  CHANGE_IS_FAVORITE_PROPERTY: 'data/changeIsFavoriteProperty',
+  REQUIRED_AUTHORIZATION: 'user/requireAuthorization',
+  SET_USER: 'user/setUser',
 };
 
-const OfferActionCreator = {
-  requestOffers: () => ({
-    type: ActionType.OFFERS_REQUEST,
-  }),
-  loadOffersSuccess: (offers) => ({
-    type: ActionType.OFFERS_SUCCESS,
-    payload: offers,
-  }),
-  loadOffersFailure: (error) => ({
-    type: ActionType.OFFERS_FAILURE,
-    payload: error,
-  }),
-  loadOffer: (offer) => ({
-    type: ActionType.LOAD_OFFER,
-    payload: offer,
-  }),
-  requestNearOffers: () => ({
-    type: ActionType.NEAR_OFFERS_REQUEST,
-  }),
-  loadNearOffersSuccess: (offers) => ({
-    type: ActionType.NEAR_OFFERS_SUCCESS,
-    payload: offers,
-  }),
-  loadNearOffersFailure: (error) => ({
-    type: ActionType.NEAR_OFFERS_FAILURE,
-    payload: error,
-  }),
-  requestFavoriteOffers: () => ({
-    type: ActionType.FAVORITE_OFFERS_REQUEST,
-  }),
-  loadFavoriteOffersSuccess: (offers) => ({
-    type: ActionType.FAVORITE_OFFERS_SUCCESS,
-    payload: offers,
-  }),
-  loadFavoriteOffersFailure: (error) => ({
-    type: ActionType.FAVORITE_OFFERS_FAILURE,
-    payload: error,
-  }),
-};
+export const changeCity = createAction(ActionType.CHANGE_CITY, (selectedCity) => ({
+  payload: selectedCity,
+}));
 
-const ReviewActionCreator = {
-  loadReviewsSuccess: (reviews) => ({
-    type: ActionType.REVIEWS_SUCCESS,
-    payload: reviews,
-  }),
-  requestReviews: () => ({
-    type: ActionType.REVIEWS_REQUEST,
-  }),
-  loadReviewsFailure: (error) => ({
-    type: ActionType.REVIEWS_FAILURE,
-    payload: error,
-  }),
-};
+export const changeSorting = createAction(ActionType.CHANGE_SORTING, (selectedSorting) => ({
+  payload: selectedSorting,
+}));
 
-export const ActionCreator = {
-  setCity: (city) => ({
-    type: ActionType.SET_CITY,
-    payload: city,
-  }),
-  setSortOption: (sortOption) => ({
-    type: ActionType.SET_SORT_OPTION,
-    payload: sortOption,
-  }),
-  hoverOffer: (id) => ({
-    type: ActionType.HOVER_OFFER,
-    payload: id,
-  }),
-  redirectToRoute: (url) => ({
-    type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
-  }),
-  authorizationSuccess: (info) => ({
-    type: ActionType.AUTHORIZATION_SUCCESS,
-    payload: info,
-  }),
-  authorizationFailured: () => ({
-    type: ActionType.AUTHORIZATION_FAILURED,
-  }),
-  ...OfferActionCreator,
-  ...ReviewActionCreator,
-};
+export const getActivePlace = createAction(ActionType.GET_ACTIVE_PLACE, (activePlaceId) => ({
+  payload: activePlaceId,
+}));
+
+export const loadPlaces = createAction(ActionType.LOAD_PLACES, (places) => ({
+  payload: places,
+}));
+
+export const loadFavoritesPlaces = createAction(ActionType.LOAD_FAVORITES_PLACES, (favoritesPlaces) => ({
+  payload: favoritesPlaces,
+}));
+
+// export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
+//   payload: status,
+// }));
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (token) => ({
+  payload: token,
+}));
+
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({
+  payload: url,
+}));
+
+export const authorizationInfo = createAction(ActionType.AUTHORIZATION_INFO, (info) => ({
+  payload: info,
+}));
+
+export const loadReviews = createAction(ActionType.LOAD_REVIEWS, (reviews) => ({
+  payload: reviews,
+}));
+
+export const resetIsReviewsLoaded = createAction(ActionType.RESET_IS_REVIEWS_LOADED);
+
+export const updateFavoritePlace = createAction(ActionType.UPDATE_FAVORITE_PLACE, (placeData) => ({
+  payload: placeData,
+}));
+
+export const loadPropertyData = createAction(ActionType.LOAD_PROPERTY_DATA, (propertyData) => ({
+  payload: propertyData,
+}));
+
+export const loadPropertyNearby = createAction(ActionType.LOAD_PROPERTY_NEARBY, (nearblyPlaces) => ({
+  payload: nearblyPlaces,
+}));
+
+export const setErrorMessage = createAction(ActionType.SET_ERROR_MESSAGE, (message) => ({
+  payload: message,
+}));
+
+export const changeIsFavoriteProperty = createAction(ActionType.CHANGE_IS_FAVORITE_PROPERTY);

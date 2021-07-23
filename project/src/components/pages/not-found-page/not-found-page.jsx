@@ -1,18 +1,27 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import { AppRoute } from '../../../const';
+import Header from '../../layouts/header/header';
+import {AppRoute} from '../../../common/const';
 
-function NotFoundPage ()  {
+function NotFoundPage() {
+
   return (
-    <Fragment>
-      <h1>
-        404.
-        <br />
-        <small>Page not found</small>
-      </h1>
-      <Link to={AppRoute.MAIN}>Go to main page</Link>
-    </Fragment>
+    <div className="page page--gray page--main">
+      <Header />
+
+      <main className="page__main page__main--index">
+        <div className="cities">
+          <div className="cities__places-container container">
+            <section data-testid="404">
+              <h1>404. Page not found</h1>
+              <Link to={AppRoute.MAIN}>Вернуться на главную</Link>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
+
 
 export default NotFoundPage;
