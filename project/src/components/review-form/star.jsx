@@ -11,6 +11,7 @@ function Star({rate, handleRadioChange}) {
         id={`${rate.value}-stars`}
         type="radio"
         onChange={handleRadioChange}
+        checked
       />
       <label
         htmlFor={`${rate.value}-stars`}

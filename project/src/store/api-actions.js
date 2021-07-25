@@ -27,7 +27,9 @@ export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(AppRoute.LOGIN)
-    .then(({data}) => dispatch(authorizationInfo(data)))
+    .then(({data}) => {
+      dispatch(authorizationInfo(data));
+    })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .catch(() => {})
 );
@@ -88,7 +90,7 @@ export const sendPropertyReview = (id, {rating, comment}) => (dispatch, _getStat
 );
 
 export const changeFavorite = ({id, status}) => (dispatch, _getState, api) => (
-  api.post(`/favorite/${id}/${status}`)
+  api.post(`/favorite/${id}/${status}`, {}, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => (adaptPlaceToClient(data)))
     .then((data) => dispatch(updateFavoritePlace(data)))
 );

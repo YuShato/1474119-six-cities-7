@@ -21,7 +21,7 @@ function ReviewWrapper({placeId}) {
       dispatch(fetchPropertyReviews(placeId));
     }
     return () => dispatch(resetIsReviewsLoaded());
-  }, [dispatch, isReviewsLoaded, placeId]);
+  }, []);
 
   if (!isReviewsLoaded) {
     return <LoadingScreen />;
