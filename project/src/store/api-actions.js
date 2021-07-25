@@ -35,7 +35,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 export const logIn = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(AppRoute.LOGIN, {email, password})
+  api.post(AppRoute.LOGIN, {email, password}, {}, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => {
       localStorage.setItem('token', data.token);
       dispatch(authorizationInfo(data));
