@@ -7,7 +7,7 @@ function ReviewList({reviews}) {
 
   return (
     <ul className="reviews__list" data-testid="reviews-list">
-      {reviews.map((review) => (
+      {reviews.map((review, index) => (
         <Review
           key={nanoid()}
           review={review}

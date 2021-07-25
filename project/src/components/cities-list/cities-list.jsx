@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {CITIES} from '../../common/const';
@@ -17,7 +16,7 @@ function CitiesList() {
     <ul className="locations__list tabs__list">
       {
         CITIES.map((city) => (
-          <li className="locations__item" key={nanoid()} onClick={handleCityClick}>
+          <li className="locations__item" key={city} onClick={handleCityClick}>
             <a
               className={
                 `locations__item-link tabs__item

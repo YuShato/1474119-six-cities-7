@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {SortingTypes} from '../../common/const';
 import {changeSorting} from '../../store/action';
 import {useSelector, useDispatch} from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 
 function SortingList() {
 
@@ -33,7 +32,7 @@ function SortingList() {
       <ul className="places__options places__options--custom places__options--opened" data-testid="places-options">
         {Object.values(SortingTypes).map((sortingType) => (
           <li className={`places__option ${sortingType === activeSorting ? 'places__option--active' : ''}`}
-            key={nanoid()}
+            key={sortingType}
             tabIndex={0}
             onClick={handleSortingChange}
           >{sortingType}
