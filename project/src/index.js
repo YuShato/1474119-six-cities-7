@@ -13,7 +13,7 @@ import {requireAuthorization} from './store/action';
 import browserHistory from './browser-history';
 
 export const api = createAPI(
-  () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)),
+  () => store.dispatch(requireAuthorization(AuthorizationStatus.UNCNOWN)),
 );
 
 const store = configureStore({

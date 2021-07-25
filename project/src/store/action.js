@@ -39,11 +39,8 @@ export const loadFavoritesPlaces = createAction(ActionType.LOAD_FAVORITES_PLACES
   payload: favoritesPlaces,
 }));
 
-// export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
-//   payload: status,
-// }));
-export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (token) => ({
-  payload: token,
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
+  payload: status,
 }));
 
 export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({

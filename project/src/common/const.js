@@ -48,6 +48,7 @@ export const SortingTypes = {
 export const AuthorizationStatus = {
   AUTH: 'AUTH',
   NO_AUTH: 'NO_AUTH',
+  UNCNOWN: 'UNCNOWN',
 };
 
 export const AppRoute = {

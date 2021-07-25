@@ -7,7 +7,6 @@ import {
   fetchFavoritePlaceList,
   checkAuth,
   logIn,
-  logOut,
   fetchProperty,
   fetchPropertyReviews,
   sendPropertyReview,
@@ -172,28 +171,6 @@ describe('Async operation work correctly', () => {
       });
   });
 
-  it('Should make a correct API call to /logout', () => {
-    const mockApi = new MockAdapter(api);
-    const dispatch = jest.fn();
-    const logoutLoader = logOut();
-
-    mockApi.onGet(AppRoute.LOGOUT).reply(200);
-
-    return logoutLoader(dispatch, () => {}, api)
-      .then(()=> {
-        expect(dispatch).toHaveBeenCalledTimes(2);
-
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.AUTHORIZATION_INFO,
-          payload: {},
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.REQUIRED_AUTHORIZATION,
-          payload: AuthorizationStatus.NO_AUTH,
-        });
-      });
-  });
 
   it('Should make a correct API call to /hotels/:id, /hotel/:id/nearby', () => {
     const apiMock = new MockAdapter(api);
