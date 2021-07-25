@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Star({rate, handleRadioChange}) {
+
+  const handleInputChange = (evt) => {
+    evt.target.checked ? evt.target.removeAttribute('checked') : evt.target.setAttribute('checked', true);
+  };
+
   return (
     <React.Fragment>
       <input
@@ -11,7 +16,7 @@ function Star({rate, handleRadioChange}) {
         id={`${rate.value}-stars`}
         type="radio"
         onChange={handleRadioChange}
-        checked
+        onClick={handleInputChange}
       />
       <label
         htmlFor={`${rate.value}-stars`}
