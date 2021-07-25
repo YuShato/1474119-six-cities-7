@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Star({rate, handleRadioChange}) {
-
-  const handleInputChange = (evt) => {
-    evt.target.checked ? evt.target.removeAttribute('checked') : evt.target.setAttribute('checked', true);
-  };
+function Star({rate, checked}) {
 
   return (
     <React.Fragment>
@@ -15,8 +11,7 @@ function Star({rate, handleRadioChange}) {
         defaultValue={rate.value}
         id={`${rate.value}-stars`}
         type="radio"
-        onChange={handleRadioChange}
-        onClick={handleInputChange}
+        defaultChecked={checked}
       />
       <label
         htmlFor={`${rate.value}-stars`}
@@ -33,7 +28,7 @@ function Star({rate, handleRadioChange}) {
 
 Star.propTypes = {
   rate: PropTypes.object.isRequired,
-  handleRadioChange: PropTypes.func.isRequired,
+  checked: PropTypes.bool.isRequired,
 };
 
 export default Star;

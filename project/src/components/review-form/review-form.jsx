@@ -4,7 +4,6 @@ import {sendPropertyReview} from '../../store/api-actions';
 import {MIN_SIMBOL_REVIEW, RatingData} from '../../common/const';
 import {useDispatch} from 'react-redux';
 import Star from './star';
-import { nanoid } from '@reduxjs/toolkit';
 
 
 function ReviewForm({placeId}) {
@@ -27,10 +26,10 @@ function ReviewForm({placeId}) {
     });
   };
 
-  const handleRadioChange = (evt) => {
-    const stars = evt.target.value;
-    setCommentForm({...commentForm, rating: stars});
-  };
+  // const handleRadioChange = (evt) => {
+  //   const stars = evt.target.value;
+  //   setCommentForm({...commentForm, rating: stars});
+  // };
 
   const handleFieldChange = (evt) => {
     const {name, value} = evt.target;
@@ -46,9 +45,10 @@ function ReviewForm({placeId}) {
       >
         {RatingData.map((rate) => (
           <Star
-            key={nanoid()}
+            key={rate.title}
             rate={rate}
-            handleRadioChange={handleRadioChange}
+            // handleRadioChange={handleRadioChange}
+            checked={String(rate.value) === commentForm.rating}
           />),
         )}
 

@@ -46,10 +46,11 @@ export const logIn = ({login: email, password}) => (dispatch, _getState, api) =>
 );
 
 export const logOut = () => (dispatch, _getState, api) => (
-  api.get(AppRoute.LOGOUT)
+  api.get(AppRoute.LOGOUT, {headers: {'X-token': localStorage.removeItem('token')}})
     .then(() => dispatch(authorizationInfo({})))
-    .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .then(() => localStorage.removeItem('token'))
+    .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
     .catch(() => {})
 );
 
