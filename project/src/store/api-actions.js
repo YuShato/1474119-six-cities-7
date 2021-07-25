@@ -26,7 +26,7 @@ export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(AppRoute.LOGIN)
+  api.get(AppRoute.LOGIN, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => {
       dispatch(authorizationInfo(data));
     })
