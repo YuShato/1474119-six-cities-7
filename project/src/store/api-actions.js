@@ -20,7 +20,7 @@ export const fetchPlaceList = () => (dispatch, _getState, api) => (
 );
 
 export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
-  api.get(AppRoute.FAVORITE)
+  api.get(AppRoute.FAVORITE, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadFavoritesPlaces(data.map((favoritePlace) => adaptPlaceToClient(favoritePlace)))))
     .catch(() => {})
 );

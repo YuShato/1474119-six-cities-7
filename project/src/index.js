@@ -12,6 +12,7 @@ import {redirect} from './store/middlewares/redirect';
 import {requireAuthorization} from './store/action';
 import browserHistory from './browser-history';
 
+
 export const api = createAPI(
   () => store.dispatch(requireAuthorization(AuthorizationStatus.UNCNOWN)),
 );
