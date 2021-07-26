@@ -79,13 +79,13 @@ export const fetchProperty = (id) => (dispatch, _getState, api) => (
 );
 
 export const fetchPropertyReviews = (placeId) => (dispatch, _getState, api) => (
-  api.get(`${AppRoute.COMMENTS}/${placeId}`)
+  api.get(`${AppRoute.COMMENTS}/${placeId}`, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
     .catch(() => {})
 );
 
 export const sendPropertyReview = (id, {rating, comment}) => (dispatch, _getState, api) => (
-  api.post(`${AppRoute.COMMENTS}/${id}`, {rating, comment})
+  api.post(`${AppRoute.COMMENTS}/${id}`, {rating, comment}, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
     .catch(() => {})
 );

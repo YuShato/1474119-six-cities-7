@@ -33,6 +33,7 @@ export const adaptReviewToClient = (data) => {
       ...data.user,
       avatarUrl: data.user.avatar_url,
       isPro: data.user.is_pro,
+      token: data.token,
     },
   };
 
