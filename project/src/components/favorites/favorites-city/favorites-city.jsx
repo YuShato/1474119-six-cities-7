@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {placesPropTypes} from '../../../common/prop-types';
 import Place from '../../place/place';
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../../common/const';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../../common/const';
 
 function FavoritesCity(props) {
 

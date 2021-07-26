@@ -1,7 +1,7 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {CITIES} from '../../common/const';
-import {changeCity} from '../../store/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { CITIES } from '../../common/const';
+import { changeCity } from '../../store/action';
 
 function CitiesList() {
   const dispatch = useDispatch();

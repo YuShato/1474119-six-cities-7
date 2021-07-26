@@ -1,9 +1,9 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import thunk from 'redux-thunk';
-import {createAPI} from '../../services/api';
+import { createAPI } from '../../services/api';
 import ReviewWrapper from './review-wrapper';
 import '@testing-library/jest-dom/extend-expect';
 

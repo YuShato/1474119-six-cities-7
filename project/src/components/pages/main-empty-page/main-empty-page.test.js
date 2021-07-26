@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import MainEmptyPage from './main-empty-page';
 import '@testing-library/jest-dom/extend-expect';
 

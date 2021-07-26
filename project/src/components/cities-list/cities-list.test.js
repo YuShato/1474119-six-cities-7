@@ -1,9 +1,9 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import CitiesList from './cities-list';
-import {CITIES} from '../../common/const';
+import { CITIES } from '../../common/const';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 

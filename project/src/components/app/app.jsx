@@ -1,12 +1,12 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import LoginPage from '../pages/login-page/login-page';
 import Favorites from '../favorites/favorites';
 import OfferPage from '../pages/offer-page/offer-page';
 import PrivateRoute from '../private-route/private-route';
-import {AppRoute} from '../../common/const';
+import { AppRoute } from '../../common/const';
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
-import {Router} from 'react-router-dom';
-import {createMemoryHistory} from 'history';
+import { render, screen } from '@testing-library/react';
+import { Router  } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import thunk from 'redux-thunk';
-import {createAPI} from '../../../services/api';
+import { createAPI } from '../../../services/api';
 import App from '../../app/app';
 import '@testing-library/jest-dom/extend-expect';
 

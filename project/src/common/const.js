@@ -1,7 +1,10 @@
 export const MAX_PROPERTY_IMAGES = 6;
-export const MAX_NUMBER_STARS = 5;
 export const MAX_NUMBER_PIN = 3;
-export const MIN_SIMBOL_REVIEW = 50;
+
+export const ReviewFormParams = {
+  MAX_NUMBER_STARS: 5,
+  MIN_SIMBOL_REVIEW: 50,
+};
 
 export const PlaceSettings = {
   MAIN: {

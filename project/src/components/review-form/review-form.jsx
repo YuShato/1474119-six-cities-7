@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {sendPropertyReview} from '../../store/api-actions';
-import {MIN_SIMBOL_REVIEW, RatingData} from '../../common/const';
-import {useDispatch} from 'react-redux';
+import { sendPropertyReview } from '../../store/api-actions';
+import { ReviewFormParams, RatingData } from '../../common/const';
+import { useDispatch } from 'react-redux';
 import Star from './star';
 
 
@@ -13,6 +13,7 @@ function ReviewForm({placeId}) {
     rating: null,
     comment: '',
   });
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -25,11 +26,6 @@ function ReviewForm({placeId}) {
       comment: '',
     });
   };
-
-  // const handleRadioChange = (evt) => {
-  //   const stars = evt.target.value;
-  //   setCommentForm({...commentForm, rating: stars});
-  // };
 
   const handleFieldChange = (evt) => {
     const {name, value} = evt.target;
@@ -47,7 +43,6 @@ function ReviewForm({placeId}) {
           <Star
             key={rate.title}
             rate={rate}
-            // handleRadioChange={handleRadioChange}
             checked={String(rate.value) === commentForm.rating}
           />),
         )}
@@ -69,7 +64,7 @@ function ReviewForm({placeId}) {
           describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={
-          !((commentForm.comment.length > MIN_SIMBOL_REVIEW) && commentForm.rating)
+          !((commentForm.comment.length > ReviewFormParams.MIN_SIMBOL_REVIEW) && commentForm.rating)
         }
         >Submit
         </button>

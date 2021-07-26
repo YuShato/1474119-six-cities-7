@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../services/api';
-import {ActionType} from './action';
-import {AuthorizationStatus, AppRoute} from '../common/const';
+import { createAPI } from '../services/api';
+import { ActionType } from './action';
+import { AuthorizationStatus, AppRoute } from '../common/const';
 import {
   fetchPlaceList,
   fetchFavoritePlaceList,

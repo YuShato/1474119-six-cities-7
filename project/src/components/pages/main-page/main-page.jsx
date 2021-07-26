@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PlaceList from '../../place-list/place-list';
 import Map from '../../map/map';
 import CitiesList from '../../cities-list/cities-list';
@@ -7,8 +7,8 @@ import MainEmptyPage from '../main-empty-page/main-empty-page';
 import Header from '../../layouts/header/header';
 import SortingList from '../../sorting-list/sorting-list';
 import LoadingScreen from '../../layouts/loading-screen/loading-screen';
-import {fetchPlaceList} from '../../../store/api-actions';
-import {getPlacesCity, sortPlaces} from '../../../common/utils';
+import { fetchPlaceList } from '../../../store/api-actions';
+import { getPlacesCity, sortPlaces } from '../../../common/utils';
 import { PlaceSettings } from '../../../common/const';
 
 function MainPage() {

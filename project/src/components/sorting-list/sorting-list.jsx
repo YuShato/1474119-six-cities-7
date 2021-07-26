@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {SortingTypes} from '../../common/const';
-import {changeSorting} from '../../store/action';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { SortingTypes } from '../../common/const';
+import { changeSorting } from '../../store/action';
+import { useSelector, useDispatch } from 'react-redux';
 
 function SortingList() {
 

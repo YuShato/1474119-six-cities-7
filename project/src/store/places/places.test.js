@@ -1,5 +1,5 @@
-import {changeCity, changeSorting, getActivePlace} from '../action';
-import {places} from './places';
+import { changeCity, changeSorting, getActivePlace } from '../action';
+import { places } from './places';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('Reducers work correctly', () => {

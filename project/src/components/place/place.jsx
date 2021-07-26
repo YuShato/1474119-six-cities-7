@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {  Link  } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {placePropTypes} from '../../common/prop-types';
-import {getNumberStars, getProperty} from '../../common/utils';
-import {ButtonTypes, PlaceSettings} from '../../common/const';
+import { placePropTypes } from '../../common/prop-types';
+import { getNumberStars, getProperty } from '../../common/utils';
+import { ButtonTypes, PlaceSettings } from '../../common/const';
 import ButtonIsFavorite from '../layouts/button-is-favorite/button-is-favorite';
 
 function Place({setActivePlace, unsetActivePlace, place, placeName}) {

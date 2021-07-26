@@ -1,6 +1,6 @@
-import {requireAuthorization, authorizationInfo} from '../action';
-import {user} from './user';
-import {AuthorizationStatus} from '../../common/const';
+import { requireAuthorization, authorizationInfo } from '../action';
+import { user } from './user';
+import { AuthorizationStatus } from '../../common/const';
 
 describe('Reducers work correctly', () => {
   it('Reducer with no additional parameters should return initial state', () => {

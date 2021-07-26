@@ -1,10 +1,10 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import FavoritesCity from './favorites-city';
-import {createMemoryHistory} from 'history';
-import {Router} from 'react-router-dom';
 import { PlaceSettings } from '../../../common/const';
 import '@testing-library/jest-dom/extend-expect';
 

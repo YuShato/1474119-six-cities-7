@@ -1,7 +1,7 @@
-import {combineReducers} from 'redux';
-import {places} from './places/places';
-import {data} from './data/data';
-import {user} from './user/user';
+import { combineReducers } from 'redux';
+import { places } from './places/places';
+import { data } from './data/data';
+import { user } from './user/user';
 
 
 export const NameSpace = {

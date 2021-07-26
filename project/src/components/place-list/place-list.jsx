@@ -1,8 +1,8 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import Place from '../place/place';
-import {placesPropTypes} from '../../common/prop-types';
-import {getActivePlace} from '../../store/action';
+import { placesPropTypes } from '../../common/prop-types';
+import { getActivePlace } from '../../store/action';
 
 const PlaceList = ({places, placeName}) => {
   const dispatch = useDispatch();

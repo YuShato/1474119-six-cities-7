@@ -1,5 +1,5 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {changeFavoritePlaces, updatePlaces, updateNearPlaces} from '../../common/utils';
+import { createReducer } from '@reduxjs/toolkit';
+import { changeFavoritePlaces, updatePlaces, updateNearPlaces } from '../../common/utils';
 
 import {
   loadPlaces,

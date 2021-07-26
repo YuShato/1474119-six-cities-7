@@ -1,10 +1,10 @@
 import React from 'react';
-import {Router, Route} from 'react-router-dom';
-import {createMemoryHistory} from 'history';
-import {render, screen} from '@testing-library/react';
+import { Router, Route } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
-import {Provider} from 'react-redux';
-import {AuthorizationStatus} from '../../common/const';
+import { Provider } from 'react-redux';
+import { AuthorizationStatus } from '../../common/const';
 import PrivateRoute from './private-route';
 import '@testing-library/jest-dom/extend-expect';
 

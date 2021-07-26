@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import ReviewForm from '../review-form/review-form';
 import ReviewList from '../review-list/review-list';
 import LoadingScreen from '../layouts/loading-screen/loading-screen';
-import {fetchPropertyReviews} from '../../store/api-actions';
-import {AuthorizationStatus} from '../../common/const';
-import {resetIsReviewsLoaded} from '../../store/action';
+import { fetchPropertyReviews } from '../../store/api-actions';
+import { AuthorizationStatus } from '../../common/const';
+import { resetIsReviewsLoaded } from '../../store/action';
 import PropTypes from 'prop-types';
 
 

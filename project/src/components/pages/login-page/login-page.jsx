@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import Header from '../../layouts/header/header';
-import {logIn} from '../../../store/api-actions';
-import {useDispatch} from 'react-redux';
+import { logIn } from '../../../store/api-actions';
+import { useDispatch } from 'react-redux';
 
 function LoginPage() {
   const dispatch = useDispatch();

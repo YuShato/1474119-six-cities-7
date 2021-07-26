@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FavoritesCity from './favorites-city/favorites-city';
 import Header from '../layouts/header/header';
 import Footer from '../layouts/footer/footer';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
-import {fetchFavoritePlaceList} from '../../store/api-actions';
+import { fetchFavoritePlaceList } from '../../store/api-actions';
 import LoadingScreen from '../layouts/loading-screen/loading-screen';
 import { nanoid } from '@reduxjs/toolkit';
 import { PlaceSettings } from '../../common/const';

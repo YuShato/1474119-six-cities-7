@@ -1,8 +1,8 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Footer from './footer';
-import {createMemoryHistory} from 'history';
-import {Router} from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 
 

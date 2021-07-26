@@ -1,10 +1,10 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import Favorites from './favorites';
-import {createMemoryHistory} from 'history';
-import {Router} from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 
 const mockStore = configureStore();

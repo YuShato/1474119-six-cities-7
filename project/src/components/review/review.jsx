@@ -1,6 +1,6 @@
 import React from 'react';
-import {reviewPropTypes} from '../../common/prop-types';
-import {getNumberStars, getReviewDate} from '../../common/utils';
+import { reviewPropTypes } from '../../common/prop-types';
+import { getNumberStars, getReviewDate } from '../../common/utils';
 
 function Review({review}) {
   const {

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {AppRoute, AuthorizationStatus, ButtonTypes} from '../../../common/const';
-import {changeFavorite} from '../../../store/api-actions';
-import {useDispatch, useSelector} from 'react-redux';
-import {redirectToRoute, changeIsFavoriteProperty} from '../../../store/action';
+import { AppRoute, AuthorizationStatus, ButtonTypes } from '../../../common/const';
+import { changeFavorite } from '../../../store/api-actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { redirectToRoute, changeIsFavoriteProperty } from '../../../store/action';
 
 function ButtonIsFavorite({id, isFavorite, nameButton}) {
   const dispatch = useDispatch();

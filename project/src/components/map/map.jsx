@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import {placesPropTypes} from '../../common/prop-types';
-import {useSelector} from 'react-redux';
+import { placesPropTypes } from '../../common/prop-types';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 function Map({places, city}) {
