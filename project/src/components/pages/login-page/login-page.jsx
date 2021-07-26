@@ -2,19 +2,27 @@ import React, {useRef} from 'react';
 import Header from '../../layouts/header/header';
 import { logIn } from '../../../store/api-actions';
 import { useDispatch } from 'react-redux';
+import { changeCity } from '../../../store/action';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../../common/const';
 
 function LoginPage() {
   const dispatch = useDispatch();
   const loginRef = useRef();
   const passwordRef = useRef();
 
-  const handelSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
 
     dispatch(logIn({
       login: loginRef.current.value,
       password: passwordRef.current.value,
     }));
+  };
+
+  const handleCityClick = (evt) => {
+    evt.preventDefault();
+    dispatch(changeCity(evt.target.textContent));
   };
 
   return (
@@ -27,7 +35,7 @@ function LoginPage() {
             <h1 className="login__title" data-testid="login-title">Sign in</h1>
             <form className="login__form form" action=""
               method="post"
-              onSubmit={handelSubmit}
+              onSubmit={handleSubmit}
             >
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden" htmlFor="input-email">E-mail</label>
@@ -56,10 +64,10 @@ function LoginPage() {
             </form>
           </section>
           <section className="locations locations--login locations--current">
-            <div className="locations__item">
-              <a className="locations__item-link" href="#">
+            <div className="locations__item" onClick={handleCityClick}>
+              <Link className="locations__item-link" to={AppRoute.MAIN}>
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
