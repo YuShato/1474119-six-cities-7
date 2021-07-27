@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Star({rate, checked}) {
+function Star({rate}) {
 
   return (
     <React.Fragment>
@@ -11,7 +11,6 @@ function Star({rate, checked}) {
         defaultValue={rate.value}
         id={`${rate.value}-stars`}
         type="radio"
-        defaultChecked={checked}
       />
       <label
         htmlFor={`${rate.value}-stars`}
@@ -28,7 +27,6 @@ function Star({rate, checked}) {
 
 Star.propTypes = {
   rate: PropTypes.object.isRequired,
-  checked: PropTypes.bool.isRequired,
 };
 
 export default Star;

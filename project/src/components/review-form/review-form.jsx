@@ -25,6 +25,8 @@ function ReviewForm({placeId}) {
       rating: null,
       comment: '',
     });
+    evt.target.reset();
+
   };
 
   const handleFieldChange = (evt) => {
@@ -43,7 +45,6 @@ function ReviewForm({placeId}) {
           <Star
             key={rate.title}
             rate={rate}
-            checked={String(rate.value) === commentForm.rating}
           />),
         )}
 
