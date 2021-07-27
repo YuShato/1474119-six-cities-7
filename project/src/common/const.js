@@ -4,6 +4,7 @@ export const MAX_NUMBER_PIN = 3;
 export const UserFormReview = {
   MAX_NUMBER_STARS: 5,
   MIN_SIMBOL_REVIEW: 50,
+  MAX_SIMBOL_REVIEW: 300,
 };
 
 export const PlaceSettings = {

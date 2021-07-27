@@ -17,7 +17,7 @@ function Star({rate}) {
         htmlFor={`${rate.value}-stars`}
         className="reviews__rating-label form__rating-label"
         title={rate.title}
-        data-testId="stars-rating-label"
+        data-testid="stars-rating-label"
       >
         <svg className="form__star-image" width={37} height={33}>
           <use xlinkHref="#icon-star" />
