@@ -26,7 +26,10 @@ function Star({rate}) {
 }
 
 Star.propTypes = {
-  rate: PropTypes.object.isRequired,
+  rate: PropTypes.shape({
+    value: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Star;
