@@ -1,10 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { CITIES, SortingTypes } from '../../common/const';
+import { CITIES, SortingType } from '../../common/const';
 import { changeCity, changeSorting, getActivePlace } from '../action';
 
 const initialState = {
   activeCity: CITIES[0],
-  activeSorting: SortingTypes.POPULAR,
+  activeSorting: SortingType.POPULAR,
   activePlaceId: null,
 };
 

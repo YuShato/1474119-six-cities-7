@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { sendPropertyReview } from '../../store/api-actions';
-import { ReviewFormParams, RatingData } from '../../common/const';
+import { UserFormReview, RatingData } from '../../common/const';
 import { useDispatch } from 'react-redux';
 import Star from './star';
 
@@ -65,7 +65,7 @@ function ReviewForm({placeId}) {
           describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={
-          !((commentForm.comment.length > ReviewFormParams.MIN_SIMBOL_REVIEW) && commentForm.rating)
+          !((commentForm.comment.length > UserFormReview.MIN_SIMBOL_REVIEW) && commentForm.rating)
         }
         >Submit
         </button>

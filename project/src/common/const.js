@@ -1,7 +1,7 @@
 export const MAX_PROPERTY_IMAGES = 6;
 export const MAX_NUMBER_PIN = 3;
 
-export const ReviewFormParams = {
+export const UserFormReview = {
   MAX_NUMBER_STARS: 5,
   MIN_SIMBOL_REVIEW: 50,
 };
@@ -41,7 +41,7 @@ export const PlaceSettings = {
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
-export const SortingTypes = {
+export const SortingType = {
   POPULAR: 'Popular',
   PRICE_LOW: 'Price: low to high',
   PRICE_HIGH: 'Price: high to low',
