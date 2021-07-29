@@ -7,6 +7,7 @@ import Favorites from '../favorites/favorites';
 import OfferPage from '../pages/offer-page/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { AppRoute } from '../../common/const';
+import PrivateLoginRoute from '../private-route/private-login-route';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Route exact path={AppRoute.MAIN}
         render={() => <MainPage />}
       />
-      <Route exact path={AppRoute.LOGIN}
+      <PrivateLoginRoute exact
+        path={AppRoute.LOGIN}
         render={() => <LoginPage />}
       />
       <PrivateRoute exact

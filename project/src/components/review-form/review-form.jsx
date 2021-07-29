@@ -26,16 +26,15 @@ function ReviewForm({placeId}) {
       comment: '',
     });
     evt.target.reset();
-
   };
 
   const handleFieldChange = (evt) => {
     const {name, value} = evt.target;
     setCommentForm({...commentForm, [name]: value});
-    checkReviewInput();
+    handleTextareaChange();
   };
 
-  const checkReviewInput = () => {
+  const handleTextareaChange = () => {
     const valueLength = commentForm.comment.length;
     let currentMessage = '';
     let currentColor = '';
@@ -53,7 +52,7 @@ function ReviewForm({placeId}) {
 
     return {
       currentMessage: currentMessage,
-      color: currentColor,
+      currentColor: currentColor,
     };
   };
 
@@ -82,7 +81,7 @@ function ReviewForm({placeId}) {
         data-testid="reviews-textarea"
       >
       </textarea>
-      <output id="comment" style={{fontSize:'12px', color: `${checkReviewInput().color}`}}>{checkReviewInput().currentMessage}</output>
+      <output id="comment" style={{fontSize:'12px', color: `${handleTextareaChange().currentColor}`}}>{handleTextareaChange().currentMessage}</output>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and

@@ -37,27 +37,34 @@ function LoginPage() {
               method="post"
               onSubmit={handleSubmit}
             >
-              <div className="login__input-wrapper form__input-wrapper">
+              <div className="login__input-wrapper form__input-wrapper" style={{position: 'relative'}}>
                 <label className="visually-hidden" htmlFor="input-email">E-mail</label>
                 <input
                   id="input-email"
                   className="login__input form__input"
                   type="email" name="email"
                   placeholder="Email"
-                  required=""
+                  required
                   autoComplete="username"
                   ref={loginRef} data-testid="email"
+                  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                  title="Invalid email address"
                 />
               </div>
-              <div className="login__input-wrapper form__input-wrapper">
+              <div className="login__input-wrapper form__input-wrapper" style={{position: 'relative'}}>
                 <label className="visually-hidden" htmlFor="input-password">Password</label>
                 <input
                   id="input-password"
-                  className="login__input form__input" type="password" name="password" placeholder="Password"
-                  required=""
+                  className="login__input form__input"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
                   ref={passwordRef}
                   autoComplete="current-password"
                   data-testid="password"
+                  pattern="^[^\s]+(\s.*)?$"
+                  title="Invalid password"
                 />
               </div>
               <button className="login__submit form__submit button" type="submit" data-testid="login-submit">Sign in</button>
