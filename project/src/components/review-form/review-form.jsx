@@ -80,6 +80,8 @@ function ReviewForm({placeId}) {
         value={commentForm.comment}
         onChange={handleFieldChange}
         data-testid="reviews-textarea"
+        minLength={UserFormReview.MIN_SIMBOL_REVIEW}
+        maxLength={UserFormReview.MAX_SIMBOL_REVIEW}
       >
       </textarea>
       <output id="comment" style={{fontSize:'12px', color: `${handleTextareaChange().currentColor}`}}>{handleTextareaChange().currentMessage}</output>
@@ -89,7 +91,7 @@ function ReviewForm({placeId}) {
           describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit"
-          disabled={!((commentForm.comment.length > UserFormReview.MIN_SIMBOL_REVIEW) && (commentForm.comment.length < UserFormReview.MAX_SIMBOL_REVIEW) && commentForm.rating)}
+          disabled={!((commentForm.comment.length > UserFormReview.MIN_SIMBOL_REVIEW))}
         >Submit
         </button>
       </div>
