@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ErrorMessage } from '../../common/const';
-
-const DEFAULT_TIMEOUT = 10000;
+import { ErrorMessage, DEFAULT_TIMEOUT } from '../../common/const';
 
 
 function ErrorNotification({message = ErrorMessage.DEFAULT}) {
@@ -20,7 +18,7 @@ function ErrorNotification({message = ErrorMessage.DEFAULT}) {
   }, []);
 
   return (
-    <div >
+    <div data-testid="error-message">
       {isVisible && (
         <div
           style={{

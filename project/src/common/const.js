@@ -8,7 +8,7 @@ export const UserFormReview = {
   MAX_SIMBOL_REVIEW: 300,
 };
 
-export const PlaceSettings = {
+export const PlaceName = {
   MAIN: {
     type: 'MAIN',
     article: 'cities__place-card',
@@ -90,6 +90,7 @@ export const ButtonTypes = {
 
 export const HttpCode = {
   NOT_FOUND: 404,
+  NOT_AUTH: 401,
 };
 
 export const  RatingData = [
@@ -119,5 +120,7 @@ export const ErrorMessage = {
   DEFAULT: 'Something went wrong. Try again later.',
   OFFLINE: 'Internet connection error.',
   REVIEW_ERROR: 'Review sending error. Please try again.',
-  LOGIN_ERROR: 'Login error. Please try again.',
+  LOGIN_ERROR: 'Login or password error. Please try again.',
 };
+
+export const DEFAULT_TIMEOUT = 10000;

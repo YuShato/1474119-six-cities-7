@@ -34,6 +34,7 @@ function ReviewWrapper({placeId}) {
         <span className="reviews__amount">
           {currentReviews.length}
         </span>
+        <div id="error-wrapper"></div>
       </h2>
       {
         (currentReviews.length > 0)

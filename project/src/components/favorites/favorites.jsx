@@ -7,7 +7,7 @@ import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import { fetchFavoritePlaceList } from '../../store/api-actions';
 import LoadingScreen from '../layouts/loading-screen/loading-screen';
 import { nanoid } from '@reduxjs/toolkit';
-import { PlaceSettings } from '../../common/const';
+import { PlaceName } from '../../common/const';
 
 function Favorites() {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function Favorites() {
                       key={nanoid()}
                       places={favoriteCityPlaces}
                       city={city}
-                      placeName={PlaceSettings.FAVORITES.type}
+                      placeName={PlaceName.FAVORITES.type}
                     />
                   );
                 })}

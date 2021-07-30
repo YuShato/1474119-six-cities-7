@@ -9,7 +9,7 @@ import SortingList from '../../sorting-list/sorting-list';
 import LoadingScreen from '../../layouts/loading-screen/loading-screen';
 import { fetchPlaceList } from '../../../store/api-actions';
 import { getPlacesCity, sortPlaces } from '../../../common/utils';
-import { PlaceSettings } from '../../../common/const';
+import { PlaceName } from '../../../common/const';
 
 function MainPage() {
   const {isDataLoaded, places} = useSelector((state) => state.DATA);
@@ -35,9 +35,9 @@ function MainPage() {
       <Header />
 
       <main className={`page__main page__main--index ${placesCurrent.length > 0 ? '' : 'page__main--index-empty'}`} data-testid="main">
-        <div id="error-wrapper"></div>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
+          <div id="error-wrapper"></div>
           <section className="locations container">
             <CitiesList />
           </section>
@@ -50,7 +50,7 @@ function MainPage() {
                 <b className="places__found">{placesCurrent.length} places to stay in {activeCity}</b>
                 <SortingList />
                 <div className="cities__places-list places__list tabs__content" data-testid="places">
-                  <PlaceList places={placesCurrent} placeName={PlaceSettings.MAIN.type}/>
+                  <PlaceList places={placesCurrent} placeName={PlaceName.MAIN.type}/>
                 </div>
               </section>
               <div className="cities__right-section">

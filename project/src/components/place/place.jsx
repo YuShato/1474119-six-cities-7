@@ -3,7 +3,7 @@ import {  Link  } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { placePropTypes } from '../../common/prop-types';
 import { getNumberStars, getProperty } from '../../common/utils';
-import { ButtonTypes, PlaceSettings } from '../../common/const';
+import { ButtonTypes, PlaceName } from '../../common/const';
 import ButtonIsFavorite from '../layouts/button-is-favorite/button-is-favorite';
 
 function Place({setActivePlace, unsetActivePlace, place, placeName}) {
@@ -37,14 +37,14 @@ function Place({setActivePlace, unsetActivePlace, place, placeName}) {
   };
 
   return (
-    <article className={`${PlaceSettings[placeName].article} place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} data-testid="place-card">
+    <article className={`${PlaceName[placeName].article} place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} data-testid="place-card">
       {isPremium ? renderIsPremium() : null}
-      <div className={`${PlaceSettings[placeName].image.imageClass} place-card__image-wrapper`}>
+      <div className={`${PlaceName[placeName].image.imageClass} place-card__image-wrapper`}>
         <Link to={getProperty(id)}>
-          <img className="place-card__image" src={previewImage} width={PlaceSettings[placeName].image.width} height={PlaceSettings[placeName].image.height} alt={title}/>
+          <img className="place-card__image" src={previewImage} width={PlaceName[placeName].image.width} height={PlaceName[placeName].image.height} alt={title}/>
         </Link>
       </div>
-      <div className={`${PlaceSettings[placeName].info} place-card__info`}>
+      <div className={`${PlaceName[placeName].info} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>

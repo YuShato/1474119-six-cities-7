@@ -12,13 +12,13 @@ import {
 } from './action';
 import {AuthorizationStatus, AppRoute, HttpCode, ErrorMessage} from '../common/const';
 import {adaptPlaceToClient, adaptReviewToClient} from './adapter';
-import { createUserErrorMessage } from '../common/utils';
+import { createUserErrorMessage, createPageErrorMessage } from '../common/utils';
 
 export const fetchPlaceList = () => (dispatch, _getState, api) => (
   api.get(AppRoute.HOTELS)
     .then(({data}) => dispatch(loadPlaces(data.map((place) => adaptPlaceToClient(place)))))
     .catch(() => {
-      createUserErrorMessage(ErrorMessage.DEFAULT);
+      createPageErrorMessage(ErrorMessage.DEFAULT);
     })
 );
 
@@ -26,7 +26,7 @@ export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
   api.get(AppRoute.FAVORITE, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadFavoritesPlaces(data.map((favoritePlace) => adaptPlaceToClient(favoritePlace)))))
     .catch(() => {
-      createUserErrorMessage(ErrorMessage.DEFAULT);
+      createPageErrorMessage(ErrorMessage.DEFAULT);
     })
 );
 
@@ -36,9 +36,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
       dispatch(authorizationInfo(data));
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {
-      createUserErrorMessage(ErrorMessage.LOGIN_ERROR);
-    })
+    .catch(() => {})
 );
 
 export const logIn = ({login: email, password}) => (dispatch, _getState, api) => (
@@ -84,7 +82,7 @@ export const fetchProperty = (id) => (dispatch, _getState, api) => (
 
         default:
           dispatch(setErrorMessage(response.status));
-          createUserErrorMessage(ErrorMessage.DEFAULT);
+          createPageErrorMessage(ErrorMessage.DEFAULT);
           break;
       }
     })
@@ -94,7 +92,7 @@ export const fetchPropertyReviews = (placeId) => (dispatch, _getState, api) => (
   api.get(`${AppRoute.COMMENTS}/${placeId}`, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
     .catch(() => {
-      createUserErrorMessage(ErrorMessage.REVIEW_ERROR);
+      createPageErrorMessage(ErrorMessage.REVIEW_ERROR);
     })
 );
 

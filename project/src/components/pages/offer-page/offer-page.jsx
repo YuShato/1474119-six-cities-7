@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { MAX_PROPERTY_IMAGES, MAX_NUMBER_PIN, PlaceSettings, ButtonTypes } from '../../../common/const';
+import { MAX_PROPERTY_IMAGES, MAX_NUMBER_PIN, PlaceName, ButtonTypes } from '../../../common/const';
 import { getNumberStars } from '../../../common/utils';
 import ReviewWrapper from '../../review-wrapper/review-wrapper';
 import Map from '../../map/map';
@@ -59,8 +59,8 @@ function OfferPage() {
       <Header />
 
       <main className="page__main page__main--property">
-        <div id="error-wrapper"></div>
         <section className="property">
+          <div id="error-wrapper"></div>
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {images.slice(0, MAX_PROPERTY_IMAGES).map((image) => (
@@ -146,7 +146,7 @@ function OfferPage() {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                <PlaceList places={nearPlaces.slice(0, MAX_NUMBER_PIN)} placeName={PlaceSettings.NEAR.type} />
+                <PlaceList places={nearPlaces.slice(0, MAX_NUMBER_PIN)} placeName={PlaceName.NEAR.type} />
               </div>
             </section>
           </div>

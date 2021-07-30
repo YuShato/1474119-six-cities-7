@@ -31,6 +31,7 @@ function LoginPage() {
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">
+          <div id="error-wrapper"></div>
           <section className="login">
             <h1 className="login__title" data-testid="login-title">Sign in</h1>
             <form className="login__form form" action=""

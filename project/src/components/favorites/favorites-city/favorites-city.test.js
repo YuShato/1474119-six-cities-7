@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import FavoritesCity from './favorites-city';
-import { Place } from '../../../common/const';
+import { PlaceName } from '../../../common/const';
 import '@testing-library/jest-dom/extend-expect';
 
 const mockStore = configureStore();
@@ -134,7 +134,7 @@ it('Render \'FavoritesCity\'', () => {
   render(
     <redux.Provider store={mockStore(testFavoritesPage)}>
       <Router history={history}>
-        <FavoritesCity places={testFavoritesPage.DATA.favoritesPlaces} city={'Amsterdam'} placeName={Place.FAVORITES.type} />
+        <FavoritesCity places={testFavoritesPage.DATA.favoritesPlaces} city={'Amsterdam'} placeName={PlaceName.FAVORITES.type} />
       </Router>
     </redux.Provider>,
   );
