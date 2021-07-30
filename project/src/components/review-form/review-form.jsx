@@ -12,6 +12,7 @@ function ReviewForm({placeId}) {
   const [commentForm, setCommentForm] = React.useState({
     rating: null,
     comment: '',
+    isDisabled: true,
   });
 
 
@@ -19,13 +20,13 @@ function ReviewForm({placeId}) {
     evt.preventDefault();
 
     dispatch(sendPropertyReview(placeId, commentForm));
+    evt.target.reset();
 
     setCommentForm({
       ...commentForm,
       rating: null,
       comment: '',
     });
-    evt.target.reset();
   };
 
   const handleFieldChange = (evt) => {
@@ -87,9 +88,8 @@ function ReviewForm({placeId}) {
           To submit review please make sure to set <span className="reviews__star">rating</span> and
           describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={
-          !((commentForm.comment.length > UserFormReview.MIN_SIMBOL_REVIEW) && (commentForm.comment.length < UserFormReview.MAX_SIMBOL_REVIEW) && commentForm.rating)
-        }
+        <button className="reviews__submit form__submit button" type="submit"
+          disabled={!((commentForm.comment.length > UserFormReview.MIN_SIMBOL_REVIEW) && (commentForm.comment.length < UserFormReview.MAX_SIMBOL_REVIEW) && commentForm.rating)}
         >Submit
         </button>
       </div>
