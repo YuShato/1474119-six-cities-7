@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from '../../layouts/loading-screen/loading-screen';
 import ButtonIsFavorite from '../../layouts/button-is-favorite/button-is-favorite';
 import { nanoid } from 'nanoid';
+import { getActivePlace } from '../../../store/action';
+
 
 function OfferPage() {
   const {currentProperty, nearPlaces} = useSelector((state) => state.DATA);
@@ -53,6 +55,14 @@ function OfferPage() {
       <span>Premium</span>
     </div>
   );
+
+  const setOfferActivePlace = () => {
+    if (dispatch(getActivePlace(id)) !== undefined) {
+      dispatch(getActivePlace(id));
+    }
+  };
+
+  setOfferActivePlace();
 
   return (
     <div className="page">
@@ -136,7 +146,7 @@ function OfferPage() {
           </div>
           <section className="property__map map">
             {
-              nearPlaces.length && <Map city={city} places={nearPlaces.slice(0, MAX_NUMBER_PIN)} />
+              nearPlaces.length && <Map city={city} places={nearPlaces.slice(0, MAX_NUMBER_PIN).concat(currentProperty)} />
             }
           </section>
         </section>
