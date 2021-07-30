@@ -1,4 +1,4 @@
-import { SortingType, AppRoute, UserFormReview } from './const';
+import { Sorting, AppRoute, UserFormReview } from './const';
 import moment from 'moment';
 
 export const getNumberStars = (rating) => `${rating / UserFormReview.MAX_NUMBER_STARS * 100}%`;
@@ -7,11 +7,11 @@ export const getPlacesCity = (places, selectedCity) => places.filter((place) => 
 
 export const sortPlaces = (places, sortingType) => {
   switch (sortingType) {
-    case SortingType.PRICE_LOW:
+    case Sorting.PRICE_LOW:
       return [...places].sort((a, b) => (a.price - b.price));
-    case SortingType.PRICE_HIGH:
+    case Sorting.PRICE_HIGH:
       return [...places].sort((a, b) => (b.price - a.price));
-    case SortingType.RATING:
+    case Sorting.RATING:
       return [...places].sort((a, b) => (b.rating - a.rating));
     default:
       return [...places];

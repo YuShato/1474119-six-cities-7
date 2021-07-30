@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import Place from './place';
 import userEvent from '@testing-library/user-event';
-import { PlaceSettings } from '../../common/const';
+import { PlaceName } from '../../common/const';
 import '@testing-library/jest-dom/extend-expect';
 
 const mockStore = configureStore();
@@ -52,7 +52,7 @@ describe('Test \'Card\'', () => {
     render(
       <redux.Provider store={mockStore({USER: {authorizationStatus: 'NO_AUTH'}})}>
         <Router history={history}>
-          <Place place={testPlace} placeName={PlaceSettings.MAIN.type} />
+          <Place place={testPlace} placeName={PlaceName.MAIN.type} />
         </Router>
       </redux.Provider>,
     );
@@ -70,7 +70,7 @@ describe('Test \'Card\'', () => {
     render(
       <redux.Provider store={mockStore({USER: {authorizationStatus: 'NO_AUTH'}})}>
         <Router history={history}>
-          <Place place={testPlace} placeName={PlaceSettings.MAIN.type} />
+          <Place place={testPlace} placeName={PlaceName.MAIN.type} />
         </Router>
       </redux.Provider>,
     );

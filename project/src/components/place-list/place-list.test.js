@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history';
 import configureStore from 'redux-mock-store';
 import * as redux from 'react-redux';
 import PlaceList from './place-list';
-import { PlaceSettings } from '../../common/const';
+import { Place } from '../../common/const';
 import '@testing-library/jest-dom/extend-expect';
 
 const mockStore = configureStore();
@@ -120,7 +120,7 @@ it('Render \'PlaceList\'', () => {
   render(
     <redux.Provider store={mockStore({USER: {authorizationStatus: 'NO_AUTH'}})}>
       <Router history={history}>
-        <PlaceList places={testPlacesList} placeName={PlaceSettings.MAIN.type} />
+        <PlaceList places={testPlacesList} placeName={Place.MAIN.type} />
       </Router>
     </redux.Provider>,
   );

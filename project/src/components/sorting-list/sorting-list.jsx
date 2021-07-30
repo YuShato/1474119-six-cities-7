@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SortingType } from '../../common/const';
+import { Sorting } from '../../common/const';
 import { changeSorting } from '../../store/action';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -30,7 +30,7 @@ function SortingList() {
       </span>
       {openedSorting &&
       <ul className="places__options places__options--custom places__options--opened" data-testid="places-options">
-        {Object.values(SortingType).map((sortingType) => (
+        {Object.values(Sorting).map((sortingType) => (
           <li className={`places__option ${sortingType === activeSorting ? 'places__option--active' : ''}`}
             key={sortingType}
             tabIndex={0}

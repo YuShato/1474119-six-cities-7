@@ -43,7 +43,7 @@ export const PlaceSettings = {
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
-export const SortingType = {
+export const Sorting = {
   POPULAR: 'Popular',
   PRICE_LOW: 'Price: low to high',
   PRICE_HIGH: 'Price: high to low',
