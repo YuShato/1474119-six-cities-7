@@ -35,6 +35,7 @@ function MainPage() {
       <Header />
 
       <main className={`page__main page__main--index ${placesCurrent.length > 0 ? '' : 'page__main--index-empty'}`} data-testid="main">
+        <div id="error-wrapper"></div>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">

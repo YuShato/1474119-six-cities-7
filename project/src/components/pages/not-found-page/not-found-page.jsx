@@ -7,9 +7,11 @@ function NotFoundPage() {
 
   return (
     <div className="page page--gray page--main">
+      <div id="error-wrapper"></div>
       <Header />
 
       <main className="page__main page__main--index">
+        <div id="error-wrapper"></div>
         <div className="cities">
           <div className="cities__places-container container">
             <section data-testid="404">

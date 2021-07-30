@@ -57,6 +57,6 @@ export function getReviewDate(date) {
 export const createUserErrorMessage = (message) => {
   ReactDOM.render(
     <ErrorNotification message={message}/>,
-    document.querySelector('#root'),
+    document.querySelector('#error-wrapper'),
   );
 };

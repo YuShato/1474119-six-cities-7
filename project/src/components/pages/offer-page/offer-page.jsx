@@ -59,6 +59,7 @@ function OfferPage() {
       <Header />
 
       <main className="page__main page__main--property">
+        <div id="error-wrapper"></div>
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
