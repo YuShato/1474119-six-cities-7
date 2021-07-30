@@ -4,7 +4,7 @@ import ReviewForm from '../review-form/review-form';
 import ReviewList from '../review-list/review-list';
 import LoadingScreen from '../layouts/loading-screen/loading-screen';
 import { fetchPropertyReviews } from '../../store/api-actions';
-import { AuthorizationStatus } from '../../common/const';
+import { AuthorizationStatus, MAX_REVIEW_AMOUNT } from '../../common/const';
 import { resetIsReviewsLoaded } from '../../store/action';
 import PropTypes from 'prop-types';
 
@@ -13,7 +13,7 @@ function ReviewWrapper({placeId}) {
 
   const {authorizationStatus} = useSelector((state) => state.USER);
   const {isReviewsLoaded, propertyReviews} = useSelector((state) => state.DATA);
-  const currentReviews = propertyReviews.slice(-10);
+  const currentReviews = propertyReviews.slice(MAX_REVIEW_AMOUNT);
 
   const dispatch = useDispatch();
 

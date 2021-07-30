@@ -1,6 +1,6 @@
 export const MAX_PROPERTY_IMAGES = 6;
 export const MAX_NUMBER_PIN = 3;
-export const MAX_REVIEW_AMOUNT = 10;
+export const MAX_REVIEW_AMOUNT = -10;
 
 export const UserFormReview = {
   MAX_NUMBER_STARS: 5,
