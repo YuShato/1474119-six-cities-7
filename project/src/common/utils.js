@@ -1,8 +1,6 @@
 import { Sorting, AppRoute, UserFormReview } from './const';
 import moment from 'moment';
-import ErrorNotification from '../components/error-notification/error-notification';
-import React from 'react';
-import ReactDOM from 'react-dom';
+
 
 export const getNumberStars = (rating) => `${rating / UserFormReview.MAX_NUMBER_STARS * 100}%`;
 
@@ -53,18 +51,3 @@ export function getReviewDate(date) {
     htmlDate:  moment(date).format('YYYY-MM-DD'),
   };
 }
-
-export const createUserErrorMessage = (message) => {
-  const errorWrapper = document.querySelector('#error-wrapper');
-  ReactDOM.render(
-    <ErrorNotification message={message}/>,
-    errorWrapper,
-  );
-};
-
-export const createPageErrorMessage = (message) => {
-  ReactDOM.render(
-    <ErrorNotification message={message}/>,
-    document.querySelector('#root'),
-  );
-};

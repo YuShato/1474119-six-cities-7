@@ -10,24 +10,19 @@ import {
   loadPropertyNearby,
   setErrorMessage
 } from './action';
-import {AuthorizationStatus, AppRoute, HttpCode, ErrorMessage} from '../common/const';
+import {AuthorizationStatus, AppRoute, HttpCode} from '../common/const';
 import {adaptPlaceToClient, adaptReviewToClient} from './adapter';
-import { createUserErrorMessage, createPageErrorMessage } from '../common/utils';
 
 export const fetchPlaceList = () => (dispatch, _getState, api) => (
   api.get(AppRoute.HOTELS)
     .then(({data}) => dispatch(loadPlaces(data.map((place) => adaptPlaceToClient(place)))))
-    .catch(() => {
-      createPageErrorMessage(ErrorMessage.DEFAULT);
-    })
+    .catch(() => {})
 );
 
 export const fetchFavoritePlaceList = () => (dispatch, _getState, api) => (
   api.get(AppRoute.FAVORITE, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadFavoritesPlaces(data.map((favoritePlace) => adaptPlaceToClient(favoritePlace)))))
-    .catch(() => {
-      createPageErrorMessage(ErrorMessage.DEFAULT);
-    })
+    .catch(() => {})
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (
@@ -47,9 +42,7 @@ export const logIn = ({login: email, password}) => (dispatch, _getState, api) =>
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
-    .catch(() => {
-      createUserErrorMessage(ErrorMessage.LOGIN_ERROR);
-    })
+    .catch(() => {})
 );
 
 export const logOut = () => (dispatch, _getState, api) => (
@@ -58,9 +51,7 @@ export const logOut = () => (dispatch, _getState, api) => (
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
     .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
     .then(() => localStorage.removeItem('token'))
-    .catch(() => {
-      createUserErrorMessage(ErrorMessage.DEFAULT);
-    })
+    .catch(() => {})
 );
 
 
@@ -82,7 +73,6 @@ export const fetchProperty = (id) => (dispatch, _getState, api) => (
 
         default:
           dispatch(setErrorMessage(response.status));
-          createPageErrorMessage(ErrorMessage.DEFAULT);
           break;
       }
     })
@@ -91,17 +81,13 @@ export const fetchProperty = (id) => (dispatch, _getState, api) => (
 export const fetchPropertyReviews = (placeId) => (dispatch, _getState, api) => (
   api.get(`${AppRoute.COMMENTS}/${placeId}`, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
-    .catch(() => {
-      createPageErrorMessage(ErrorMessage.REVIEW_ERROR);
-    })
+    .catch(() => {})
 );
 
 export const sendPropertyReview = (id, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(`${AppRoute.COMMENTS}/${id}`, {rating, comment}, {headers: {'X-token': localStorage.getItem('token')}})
     .then(({data}) => dispatch(loadReviews(data.map((review) => adaptReviewToClient(review)))))
-    .catch(() => {
-      createUserErrorMessage(ErrorMessage.REVIEW_ERROR);
-    })
+    .catch(() => {})
 );
 
 export const changeFavorite = ({id, status}) => (dispatch, _getState, api) => (

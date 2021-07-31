@@ -115,12 +115,3 @@ export const  RatingData = [
     title: 'terribly',
   },
 ];
-
-export const ErrorMessage = {
-  DEFAULT: 'Something went wrong. Try again later.',
-  OFFLINE: 'Internet connection error.',
-  REVIEW_ERROR: 'Review sending error. Please try again.',
-  LOGIN_ERROR: 'Login or password error. Please try again.',
-};
-
-export const DEFAULT_TIMEOUT = 10000;
