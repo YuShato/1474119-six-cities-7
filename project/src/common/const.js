@@ -5,6 +5,7 @@ export const MAX_REVIEW_AMOUNT = -10;
 export const ReviewData = {
   MIN_SIMBOL_REVIEW: 50,
   MAX_SIMBOL_REVIEW: 300,
+  MAX_RATING: 5,
 };
 
 export const PlaceName = {

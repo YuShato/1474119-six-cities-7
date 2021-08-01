@@ -36,9 +36,10 @@ function ReviewFeedback({comment, setComment}) {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         maxLength={ReviewData.MAX_SIMBOL_REVIEW}
-        data-tesid="reviews-textarea"
+        data-testid="reviews-textarea"
       />
       <output id="comment"
+        data-testid="reviews-output"
         style={{fontSize:'10px', color: `${handleTextareaChange().currentColor}`}}
       >
         {handleTextareaChange().currentMessage}
