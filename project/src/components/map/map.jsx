@@ -78,7 +78,10 @@ Map.propTypes = {
     }),
     name: PropTypes.string.isRequired,
   }),
-  activePlaceId: PropTypes.number.isRequired,
+  activePlaceId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default Map;

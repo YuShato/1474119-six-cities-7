@@ -2,7 +2,7 @@ import { Sorting, AppRoute, ReviewData } from './const';
 import moment from 'moment';
 
 
-export const getNumberStars = (rating) => `${rating / ReviewData.MAX_NUMBER_STARS * 100}%`;
+export const getNumberStars = (rating) => `${rating / ReviewData.MAX_RATING * 100}%`;
 
 export const getPlacesCity = (places, selectedCity) => places.filter((place) => place.city.name === selectedCity);
 
