@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: LoadingScreen should be render correctly 1`] = `
+<div>
+  <div
+    class="loading-screen"
+    data-testid="loading"
+  >
+    <div
+      class="cities__places-container cities__places-container--empty container"
+    >
+      <div
+        class="loadingio-spinner-double-ring-60g79lxvoha"
+        style="margin: auto;"
+      >
+        <div
+          class="ldio-2wzm9rhizr"
+        >
+          <div />
+          <div />
+          <div>
+            <div />
+          </div>
+          <div>
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

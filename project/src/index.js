@@ -1,28 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import offers from './mocks/offers';
-import reviews from './mocks/reviews';
-import App from './components/app';
-import Rating from './consts/rating';
-import { createStore } from 'redux';
-import { reducer } from './store/reducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {Router as BrowserRouter} from 'react-router-dom';
+import App from './components/app/app';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './store/root-reducer';
+import { createAPI } from './services/api';
 import { Provider } from 'react-redux';
+import { AuthorizationStatus } from './common/const';
+import { checkAuth } from './store/api-actions';
+import { redirect } from './store/middlewares/redirect';
+import { requireAuthorization } from './store/action';
+import browserHistory from './browser-history';
 
-const store = createStore(
-  reducer,
-  composeWithDevTools(),
+
+export const api = createAPI(
+  () => store.dispatch(requireAuthorization(AuthorizationStatus.UNCNOWN)),
 );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App
-        offers={offers.slice()}
-        reviewGet={reviews.slice()}
-        ratingData={Rating}
-      />
-    </Provider>
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }).concat(redirect),
+});
 
-  </React.StrictMode>,
-  document.getElementById('root'));
+
+store.dispatch(checkAuth()).then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter history={browserHistory}>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    document.querySelector('#root'),
+  );
+});
