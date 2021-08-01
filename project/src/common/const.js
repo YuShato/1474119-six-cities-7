@@ -117,13 +117,18 @@ export const  RatingData = [
 ];
 
 export const UserMessage = {
-  DEFAULT_ERROR: 'Something went wrong. Please try again later',
-  CONNECTION_ERROR: 'Connection error. Please try again later',
-  NOT_FOUND: 'Sorry. Page not found',
-  SUCCESS: 'Good job! Thanks for your review!',
+  DEFAULT_ERROR: 'Something went wrong.🤕 Please try again later',
+  CONNECTION_ERROR: 'Connection error.🚫 Please try again later',
+  NOT_FOUND: 'Sorry. Page not found❌',
+  SUCCESS: 'Good job!🥳 Thanks for your review!',
 };
 
 export const ColorMessage = {
   SUCCESS: 'green',
   ERROR: 'red',
+};
+
+export const MessageType = {
+  SUCCESS: 'success',
+  ERROR: 'error',
 };

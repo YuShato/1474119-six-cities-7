@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { sendPropertyReview } from '../../store/api-actions';
 import RatingList from '../rating-list/rating-list';
 import ReviewFeedback from '../review-feedback/review-feedback';
-import { ReviewData } from '../../common/const';
+import { MessageType, ReviewData, UserMessage } from '../../common/const';
+import { notify } from '../../common/notify';
 
 
 function ReviewForm ({roomId}) {
@@ -19,11 +20,13 @@ function ReviewForm ({roomId}) {
 
   const onFail = () => {
     setReadonly(false);
+    notify(UserMessage.CONNECTION_ERROR, MessageType.ERROR);
   };
 
   const onSuccess = () => {
     setRating(null);
     setComment('');
+    notify(UserMessage.SUCCESS, MessageType.SUCCESS);
   };
 
   const handleFormSubmit = (evt) => {
