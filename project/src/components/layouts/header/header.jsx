@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../../common/const';
 import { useHistory } from 'react-router-dom';
 import { logOut } from '../../../store/api-actions';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
 
 function Header() {
   const dispatch = useDispatch();
@@ -28,6 +32,7 @@ function Header() {
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
             </Link>
           </div>
+          <ToastContainer />
           <nav className="header__nav" data-testid="header-nav">
             <ul className="header__nav-list">
               {authorizationStatus === AuthorizationStatus.AUTH ?

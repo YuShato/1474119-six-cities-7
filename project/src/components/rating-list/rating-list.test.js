@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Star from './star';
 import '@testing-library/jest-dom/extend-expect';
+import RatingList from './rating-list';
+import { cleanup } from '@testing-library/react';
 
-
-const testStar= [
+const testRatingData= [
   {
     value: 5,
     title: 'perfect',
@@ -27,11 +27,15 @@ const testStar= [
   },
 ];
 
-it('Render \'Star\'', () => {
+
+describe('Render \'RatingList\'', () => {
+  afterEach(cleanup);
+
   render(
-    <Star rate={testStar[0]} />,
+    <RatingList rating={testRatingData} />,
   );
 
-  expect(screen.getByTestId('stars-rating')).toBeInTheDocument();
-  expect(screen.getByTestId('stars-rating-label')).toBeInTheDocument();
+  expect(screen.getAllByTestId('stars-rating')).toHaveLength(5);
+  expect(screen.getAllByTestId('stars-rating-label')).toHaveLength(5);
+
 });

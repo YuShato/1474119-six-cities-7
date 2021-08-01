@@ -49,7 +49,7 @@ function LoginPage() {
                   autoComplete="username"
                   ref={loginRef} data-testid="email"
                   pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-                  title="Invalid email address"
+                  title="for examle: user@mail.com"
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper" style={{position: 'relative'}}>

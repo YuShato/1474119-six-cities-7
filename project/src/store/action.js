@@ -17,6 +17,7 @@ export const ActionType = {
   CHANGE_IS_FAVORITE_PROPERTY: 'data/changeIsFavoriteProperty',
   REQUIRED_AUTHORIZATION: 'user/requireAuthorization',
   SET_USER: 'user/setUser',
+  LOAD_ERROR_MESSAGE: 'data/loadErrorMessage',
 };
 
 export const changeCity = createAction(ActionType.CHANGE_CITY, (selectedCity) => ({
@@ -70,6 +71,10 @@ export const loadPropertyNearby = createAction(ActionType.LOAD_PROPERTY_NEARBY, 
 }));
 
 export const setErrorMessage = createAction(ActionType.SET_ERROR_MESSAGE, (message) => ({
+  payload: message,
+}));
+
+export const loadErrorMessage = createAction(ActionType.LOAD_ERROR_MESSAGE, (message) => ({
   payload: message,
 }));
 

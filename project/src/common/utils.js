@@ -1,8 +1,8 @@
-import { Sorting, AppRoute, UserFormReview } from './const';
+import { Sorting, AppRoute, ReviewData } from './const';
 import moment from 'moment';
 
 
-export const getNumberStars = (rating) => `${rating / UserFormReview.MAX_NUMBER_STARS * 100}%`;
+export const getNumberStars = (rating) => `${rating / ReviewData.MAX_NUMBER_STARS * 100}%`;
 
 export const getPlacesCity = (places, selectedCity) => places.filter((place) => place.city.name === selectedCity);
 

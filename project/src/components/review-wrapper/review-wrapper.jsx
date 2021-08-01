@@ -41,7 +41,7 @@ function ReviewWrapper({placeId}) {
         && <ReviewList reviews={currentReviews} />
       }
       {
-        authorizationStatus === AuthorizationStatus.AUTH && <ReviewForm placeId={placeId} />
+        authorizationStatus === AuthorizationStatus.AUTH && <ReviewForm roomId={placeId} />
       }
     </section>
   );
