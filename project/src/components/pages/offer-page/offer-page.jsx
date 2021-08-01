@@ -146,7 +146,7 @@ function OfferPage() {
           </div>
           <section className="property__map map">
             {
-              nearPlaces.length && <Map city={city} places={nearPlaces.slice(0, MAX_NUMBER_PIN).concat(currentProperty)} />
+              nearPlaces.length && <Map activePlaceId={id} city={city} places={nearPlaces.slice(0, MAX_NUMBER_PIN).concat(currentProperty)} />
             }
           </section>
         </section>

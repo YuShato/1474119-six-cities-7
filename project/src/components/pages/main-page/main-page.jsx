@@ -15,6 +15,7 @@ function MainPage() {
   const {isDataLoaded, places} = useSelector((state) => state.DATA);
   const {activeCity, activeSorting} = useSelector((state) => state.PLACES);
   const placesCurrent = sortPlaces(getPlacesCity(places, activeCity), activeSorting);
+  const {activePlaceId} = useSelector((state) => state.PLACES);
 
   const dispatch = useDispatch();
 
@@ -55,7 +56,7 @@ function MainPage() {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map city={placesCurrent[0].city} places={placesCurrent}/>
+                  <Map city={placesCurrent[0].city} places={placesCurrent} activePlaceId={activePlaceId}/>
                 </section>
               </div>
             </div>
